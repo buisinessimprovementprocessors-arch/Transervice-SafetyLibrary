@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Safety Library Admin</title>
+<link rel="icon" type="image/png" href="brand/icon-192.png">
+<style>
+@font-face{font-family:'Barlow';font-weight:400;font-display:swap;src:url(fonts/barlow-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'Barlow';font-weight:500;font-display:swap;src:url(fonts/barlow-latin-500-normal.woff2) format('woff2')}
+@font-face{font-family:'Barlow';font-weight:600;font-display:swap;src:url(fonts/barlow-latin-600-normal.woff2) format('woff2')}
+@font-face{font-family:'Barlow Condensed';font-weight:600;font-display:swap;src:url(fonts/barlow-condensed-latin-600-normal.woff2) format('woff2')}
+@font-face{font-family:'Barlow Condensed';font-weight:700;font-display:swap;src:url(fonts/barlow-condensed-latin-700-normal.woff2) format('woff2')}
+@font-face{font-family:'Barlow Condensed';font-weight:800;font-display:swap;src:url(fonts/barlow-condensed-latin-800-normal.woff2) format('woff2')}
+:root{--bg:#f4f2ec;--card:#fff;--bg2:#e9e6dd;--line:#d6d0c2;--fg:#16181d;--muted:#6a655b;--gold:#f5c000;--gold-dim:#b08800;--ink:#0d0f14;--ok:#1d8a55;--warn:#c4570f;
+--display:"Barlow Condensed","Arial Narrow",sans-serif;--body:"Barlow","Segoe UI",system-ui,sans-serif;color-scheme:light}
+*{box-sizing:border-box}[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 var(--body)}
+header{background:var(--ink);color:#f1efe9;border-bottom:4px solid var(--gold)}
+.wrap{max-width:920px;margin:0 auto;padding-left:16px;padding-right:16px}
+header .wrap{display:flex;align-items:center;gap:16px;padding-block:16px;flex-wrap:wrap}
+header img{height:38px}
+header h1{font:800 28px/1 var(--display);text-transform:uppercase;margin:0;flex:1}
+header a{color:var(--gold);font:600 15px var(--display);letter-spacing:.08em;text-transform:uppercase;text-decoration:none}
+main{padding-block:22px 60px;display:grid;gap:20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:18px 20px;display:grid;gap:14px}
+.card h2{font:800 22px/1 var(--display);text-transform:uppercase;margin:0;display:flex;align-items:center;gap:10px}
+.card h2 .n{background:var(--ink);color:var(--gold);font-size:15px;padding:4px 8px;border-radius:2px}
+.card p{margin:0;color:var(--muted);font-size:15px}
+.status{display:inline-flex;align-items:center;gap:6px;font:700 13px var(--display);letter-spacing:.08em;text-transform:uppercase;padding:4px 8px;border-radius:2px}
+.status.ok{background:#dff3e8;color:var(--ok)}.status.no{background:#fbe6d8;color:var(--warn)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.full{grid-column:1/-1}
+.fld{display:grid;gap:4px;min-width:0}
+.fld label{font:600 12px var(--display);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.fld input,.fld textarea{width:100%;background:#fff;color:var(--fg);border:1px solid var(--line);border-radius:3px;padding:9px 10px;font:500 15px/1.4 var(--body)}
+.fld textarea{resize:vertical;min-height:84px}
+.fld input:focus,.fld textarea:focus{outline:none;border-color:var(--gold-dim)}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:8px;border:0;cursor:pointer;padding:11px 18px;border-radius:3px;font:700 16px/1 var(--display);letter-spacing:.08em;text-transform:uppercase}
+.btn-gold{background:var(--gold);color:var(--ink)}.btn-gold:hover{background:#ffd84a}
+.btn-line{background:transparent;color:var(--fg);box-shadow:inset 0 0 0 1px var(--line)}.btn-line:hover{box-shadow:inset 0 0 0 1px var(--gold-dim)}
+.btn-del{background:transparent;color:var(--warn);box-shadow:inset 0 0 0 1px var(--warn);padding:8px 12px;font-size:14px}
+.btn-del.armed{background:var(--warn);color:#fff}
+.btn:disabled{opacity:.45;cursor:default}
+.drop{border:2px dashed var(--line);border-radius:6px;padding:26px 18px;text-align:center;cursor:pointer;display:grid;gap:6px;place-items:center}
+.drop:hover,.drop.over{border-color:var(--gold-dim);background:#fdf6d8}
+.drop b{font:700 20px var(--display);text-transform:uppercase}
+.drop span{color:var(--muted);font-size:14px}
+.prog{display:grid;gap:6px}.barbg{height:8px;background:var(--bg2);border-radius:4px;overflow:hidden}.barfg{height:100%;width:0;background:var(--gold);transition:width .2s}
+.prog small{color:var(--muted);font-size:13px}
+.form{display:grid;grid-template-columns:150px 1fr;gap:18px;align-items:start}
+.thumb img{width:100%;border-left:5px solid var(--gold-dim);box-shadow:0 8px 20px rgba(0,0,0,.18)}
+.thumb small{display:block;color:var(--muted);font-size:12px;margin-top:6px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:transparent;border-radius:999px;padding:6px 12px;font:600 13px/1 var(--display);letter-spacing:.06em;text-transform:uppercase;cursor:pointer;color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--gold);color:var(--ink);border-color:var(--gold)}
+.msg{padding:10px 12px;border-radius:3px;font-size:14.5px}
+.msg.err{background:#fbe6d8;border-left:4px solid var(--warn)}
+.msg.ok{background:#dff3e8;border-left:4px solid var(--ok)}
+.msg a{color:inherit;font-weight:600}
+.list{display:grid;gap:8px;max-height:460px;overflow:auto}
+.item{display:grid;grid-template-columns:40px 1fr auto;gap:12px;align-items:center;padding:8px;border:1px solid var(--line);border-radius:4px}
+.item img{width:40px;aspect-ratio:1300/1683;object-fit:cover;background:var(--bg2)}
+.item b{font:700 16px/1.1 var(--display);text-transform:uppercase;display:block}
+.item span{font-size:13px;color:var(--muted)}
+details summary{cursor:pointer;font:700 15px var(--display);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+:focus-visible{outline:3px solid var(--gold-dim);outline-offset:2px}
+@media (max-width:700px){.grid{grid-template-columns:1fr 1fr}.form{grid-template-columns:1fr}.thumb{max-width:150px}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><img src="brand/logo.png" alt="Transervice"><h1>Safety Library Admin</h1><a href="./" target="_blank" rel="noopener">Open the library ↗</a></div></header>
+<main class="wrap">
+
+<section class="card" id="cConnect">
+  <h2><span class="n">1</span>Connect to GitHub <span class="status no" id="connState">Not connected</span></h2>
+  <p>One time per computer. The access key is saved only in this browser on this computer.</p>
+  <div class="grid">
+    <div class="fld"><label for="gOwner">GitHub account</label><input id="gOwner" autocomplete="off"></div>
+    <div class="fld"><label for="gRepo">Repository</label><input id="gRepo" autocomplete="off"></div>
+    <div class="fld"><label for="gBranch">Branch</label><input id="gBranch" value="main" autocomplete="off"></div>
+    <div class="fld full"><label for="gToken">Access key (fine-grained token)</label><input id="gToken" type="password" autocomplete="off" placeholder="github_pat_…"></div>
+  </div>
+  <div class="row"><button class="btn btn-gold" id="connBtn" type="button">Save and connect</button><button class="btn btn-line" id="forgetBtn" type="button">Forget on this computer</button></div>
+  <div id="connMsg"></div>
+</section>
+
+<section class="card" id="cUpload">
+  <h2><span class="n">2</span>Post a new issue</h2>
+  <label class="drop" id="drop" for="pdfFile"><b>Choose the newsletter PDF</b><span>or drag it here. The pages turn into phone-friendly images and the details below fill in from the PDF.</span></label>
+  <input id="pdfFile" type="file" accept="application/pdf,.pdf" hidden>
+  <div class="prog" id="prog" hidden><div class="barbg"><div class="barfg" id="progBar"></div></div><small id="progTxt"></small></div>
+  <div id="upMsg"></div>
+  <div class="form" id="form" hidden>
+    <div class="thumb"><img id="thumb" alt="Cover preview"><small id="thumbInfo"></small></div>
+    <div class="grid">
+      <div class="fld"><label for="fN">Issue #</label><input id="fN" type="number" min="1"></div>
+      <div class="fld"><label for="fD">Date</label><input id="fD" type="date"></div>
+      <div class="fld"><label for="fInc">Preventable accidents</label><input id="fInc" type="number" min="0"></div>
+      <div class="fld full"><label for="fT">Title</label><input id="fT" maxlength="90"></div>
+      <div class="fld full"><label for="fS">Synopsis (shows on hover)</label><textarea id="fS" rows="4"></textarea></div>
+      <div class="fld full"><label for="fF">Inside this issue (one per line)</label><textarea id="fF" rows="5"></textarea></div>
+      <div class="fld full"><label>Topics</label><div class="chips" id="fTopics"></div></div>
+    </div>
+  </div>
+  <div class="row" id="pubRow" hidden><button class="btn btn-gold" id="pubBtn" type="button">Publish to the library</button><span style="color:var(--muted);font-size:14px">Same link, same QR code. Live in about a minute.</span></div>
+</section>
+
+<section class="card" id="cManage">
+  <h2><span class="n">3</span>Issues in the library</h2>
+  <p>Remove takes an issue off the shelf and deletes its pages. To fix one, post it again with the same issue number; it replaces the old one.</p>
+  <div id="mMsg"></div>
+  <div class="list" id="mList"><p>Connect to GitHub to see the issues.</p></div>
+</section>
+
+<section class="card">
+  <details><summary>Setup: upload a folder of files</summary>
+    <div style="display:grid;gap:12px;margin-top:12px">
+      <p>Use this once during setup to upload the <b>pages</b> folder (GitHub's website takes only 100 files at a time). Pick the folder itself; its files go into a folder of the same name.</p>
+      <input id="bulkFiles" type="file" webkitdirectory multiple>
+      <div class="row"><button class="btn btn-line" id="bulkBtn" type="button">Upload folder</button></div>
+      <div id="bulkMsg"></div>
+    </div>
+  </details>
+</section>
+</main>
+
+<script src="lib/pdf.min.js"></script>
+<script>
+(function(){
+const $=id=>document.getElementById(id);
+const MONTHS=["January","February","March","April","May","June","July","August","September","October","November","December"];
+const pad=n=>String(n).padStart(2,"0");
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const WORDN={zero:0,no:0,one:1,two:2,three:3,four:4,five:5,six:6,seven:7,eight:8,nine:9,ten:10};
+const TOPIC_WORDS={
+  hook:/fifth[- ]?wheel|5th wheel|kingpin|tug test|dropped trailer|drop[- ]and[- ]hook|coupl|landing gear/gi,
+  inspect:/pre[- ]?trip|post[- ]?trip|inspection|\bDOT\b|\bELD\b|compliance|PM tag|PeopleNet|log(s)? /gi,
+  space:/pole|curb|tree|clearance|fixed object|backing|tight space|G\.?O\.?A\.?L|bollard|guardrail/gi,
+  store:/store|route|GPS|deliver|parking lot/gi,
+  focus:/distract|phone|focus|attention|complacen/gi,
+  fatigue:/fatigue|rest\b|hours of service|\bHOS\b|sleep|drows/gi,
+  people:/congratulat|welcome|recogni|appreciation|retire|birthday|new hire|winner/gi};
+let DATA=null, job=null, busy=false;
+const cfg={owner:"",repo:"",branch:"main",token:""};
+function msg(id,kind,html){ $(id).innerHTML=html?`<div class="msg ${kind}">${html}</div>`:""; }
+function progress(f,t){ $("prog").hidden=false; $("progBar").style.width=Math.round(f*100)+"%"; $("progTxt").textContent=t; }
+
+/* ---------- connection ---------- */
+(function initCfg(){
+  let saved={}; try{ saved=JSON.parse(localStorage.getItem("tsl-admin")||"{}") }catch(e){}
+  const host=location.hostname.endsWith(".github.io")?location.hostname.split(".")[0]:"";
+  const repo=location.pathname.split("/").filter(Boolean)[0]||"";
+  $("gOwner").value=saved.owner||host; $("gRepo").value=saved.repo||(host?repo:""); $("gBranch").value=saved.branch||"main"; $("gToken").value=saved.token||"";
+  fetch("issues.json",{cache:"no-store"}).then(r=>r.json()).then(j=>{ if(!DATA){ DATA=j; renderTopics(); } }).catch(()=>{});
+  if(saved.token) connect(false);
+})();
+async function gh(path,opts={}){
+  const r=await fetch("https://api.github.com"+path,{method:opts.method||"GET",cache:"no-store",headers:Object.assign({"Authorization":"Bearer "+cfg.token,"Accept":"application/vnd.github+json","X-GitHub-Api-Version":"2022-11-28"},opts.body?{"Content-Type":"application/json"}:{}),body:opts.body?JSON.stringify(opts.body):undefined});
+  if(!r.ok){ let m=""; try{ m=(await r.json()).message||"" }catch(e){} const e=new Error(m||("GitHub said "+r.status)); e.status=r.status; throw e; }
+  return r.status===204?null:r.json();
+}
+const repoPath=()=>`/repos/${encodeURIComponent(cfg.owner)}/${encodeURIComponent(cfg.repo)}`;
+async function connect(save){
+  cfg.owner=$("gOwner").value.trim(); cfg.repo=$("gRepo").value.trim(); cfg.branch=$("gBranch").value.trim()||"main"; cfg.token=$("gToken").value.trim();
+  if(!cfg.owner||!cfg.repo||!cfg.token){ msg("connMsg","err","Fill in the GitHub account, repository, and access key."); return; }
+  try{
+    const info=await gh(repoPath());
+    if(!info.permissions||!info.permissions.push) throw Object.assign(new Error("This access key can read the repository but can't save to it. Give it Contents: Read and write."),{status:403});
+    if(save){ try{ localStorage.setItem("tsl-admin",JSON.stringify(cfg)) }catch(e){} }
+    $("connState").className="status ok"; $("connState").textContent="Connected";
+    msg("connMsg","ok",`Connected to <b>${esc(cfg.owner)}/${esc(cfg.repo)}</b>.`);
+    await loadIssues();
+  }catch(e){
+    $("connState").className="status no"; $("connState").textContent="Not connected";
+    msg("connMsg","err", e.status===401?"GitHub didn't accept that access key. Check that you copied the whole key and that it hasn't expired.":e.status===404?"GitHub can't find that repository with this key. Check the account and repository names, and that the key has access to this repository.":esc(e.message));
+  }
+}
+$("connBtn").onclick=()=>connect(true);
+$("forgetBtn").onclick=()=>{ try{ localStorage.removeItem("tsl-admin") }catch(e){} $("gToken").value=""; cfg.token=""; $("connState").className="status no"; $("connState").textContent="Not connected"; msg("connMsg","ok","The access key was removed from this computer."); };
+const connected=()=>$("connState").classList.contains("ok");
+
+/* ---------- repo read/write ---------- */
+const b64ToText=b=>new TextDecoder().decode(Uint8Array.from(atob(b.replace(/\s/g,"")),c=>c.charCodeAt(0)));
+const textToB64=t=>{ const u=new TextEncoder().encode(t); let s=""; for(let i=0;i<u.length;i+=0x8000) s+=String.fromCharCode.apply(null,u.subarray(i,i+0x8000)); return btoa(s); };
+const blobToB64=b=>new Promise((res,rej)=>{ const fr=new FileReader(); fr.onload=()=>res(String(fr.result).split(",")[1]); fr.onerror=rej; fr.readAsDataURL(b); });
+async function loadIssues(){
+  const f=await gh(`${repoPath()}/contents/issues.json?ref=${encodeURIComponent(cfg.branch)}`);
+  DATA=JSON.parse(b64ToText(f.content));
+  renderTopics(); renderList();
+}
+async function commit(files,message,onProg){
+  const ref=await gh(`${repoPath()}/git/ref/heads/${encodeURIComponent(cfg.branch)}`);
+  const base=ref.object.sha; const c=await gh(`${repoPath()}/git/commits/${base}`);
+  const tree=[];
+  for(let i=0;i<files.length;i++){
+    const f=files[i]; if(onProg) onProg(i,files.length,f.path);
+    if(f.del){ tree.push({path:f.path,mode:"100644",type:"blob",sha:null}); continue; }
+    const content=f.text!==undefined?textToB64(f.text):await blobToB64(f.blob);
+    const bl=await gh(`${repoPath()}/git/blobs`,{method:"POST",body:{content,encoding:"base64"}});
+    tree.push({path:f.path,mode:"100644",type:"blob",sha:bl.sha});
+  }
+  const t=await gh(`${repoPath()}/git/trees`,{method:"POST",body:{base_tree:c.tree.sha,tree}});
+  const nc=await gh(`${repoPath()}/git/commits`,{method:"POST",body:{message,tree:t.sha,parents:[base]}});
+  await gh(`${repoPath()}/git/refs/heads/${encodeURIComponent(cfg.branch)}`,{method:"PATCH",body:{sha:nc.sha}});
+  return nc.sha;
+}
+const issuesJson=list=>JSON.stringify({topics:DATA.topics,issues:list.slice().sort((a,b)=>a.n-b.n)},null,1);
+
+/* ---------- PDF -> images + text ---------- */
+pdfjsLib.GlobalWorkerOptions.workerSrc="lib/pdf.worker.min.js";
+const drop=$("drop");
+["dragover","dragenter"].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.add("over")}));
+["dragleave","drop"].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.remove("over")}));
+drop.addEventListener("drop",e=>{const f=e.dataTransfer.files[0]; if(f) handleFile(f)});
+$("pdfFile").addEventListener("change",e=>{const f=e.target.files[0]; if(f) handleFile(f); e.target.value=""});
+const canvasBlob=(c,q)=>new Promise(r=>c.toBlob(r,"image/jpeg",q));
+async function handleFile(file){
+  if(busy) return;
+  if(!/pdf$/i.test(file.type)&&!/\.pdf$/i.test(file.name)){ msg("upMsg","err","That file isn't a PDF. Choose the newsletter PDF."); return; }
+  busy=true; msg("upMsg"); $("form").hidden=true; $("pubRow").hidden=true;
+  try{
+    progress(.02,"Opening the PDF…");
+    const pdf=await pdfjsLib.getDocument({data:await file.arrayBuffer()}).promise;
+    if(pdf.numPages>16) throw new Error(`This PDF has ${pdf.numPages} pages. The library takes newsletters up to 16 pages.`);
+    const pages=[], texts=[], heads=[], items=[]; let cover=null;
+    for(let i=1;i<=pdf.numPages;i++){
+      progress(.05+.9*(i-1)/pdf.numPages,`Converting page ${i} of ${pdf.numPages}…`);
+      const pg=await pdf.getPage(i); const v0=pg.getViewport({scale:1}); const v=pg.getViewport({scale:1300/v0.width});
+      const c=document.createElement("canvas"); c.width=Math.round(v.width); c.height=Math.round(v.height);
+      const ctx=c.getContext("2d"); ctx.fillStyle="#fff"; ctx.fillRect(0,0,c.width,c.height);
+      await pg.render({canvasContext:ctx,viewport:v}).promise;
+      pages.push(await canvasBlob(c,.72));
+      if(i===1){ const t=document.createElement("canvas"); t.width=520; t.height=Math.round(c.height*520/c.width); t.getContext("2d").drawImage(c,0,0,t.width,t.height); cover=await canvasBlob(t,.8); }
+      let txt="", its=[];
+      try{ const tc=await pg.getTextContent(); its=tc.items.filter(it=>it.str&&it.str.trim()); txt=its.map(it=>it.str).join(" "); }catch(e){}
+      texts.push(txt); items.push(its); heads.push(pageHeading(its));
+    }
+    job={pages,cover,texts,heads,items,name:file.name};
+    $("thumb").src=URL.createObjectURL(cover); $("thumbInfo").textContent=`${pages.length} pages · ${file.name}`;
+    autoFill();
+    $("form").hidden=false; $("pubRow").hidden=false;
+    const anyText=texts.join("").trim();
+    progress(1, anyText?`Ready: ${pages.length} pages converted and the details filled in. Look them over, then publish.`:`${pages.length} pages converted.`);
+    if(!anyText) msg("upMsg","err","This PDF has no readable text (the pages are pictures), so type the title and synopsis yourself.");
+    if(!connected()) msg("upMsg","err","Connect to GitHub (step 1) before you publish.");
+  }catch(e){ $("prog").hidden=true; msg("upMsg","err",esc(e.message||"The PDF could not be read. Export it again and retry.")); }
+  busy=false;
+}
+const JUNK=/^(safety snapshot|[–-]\s*recent incidents|recent incidents|[–-]|weekly|newsletter|safety highlights|think safe|word search|can you un|safety crossword|play to win|be sure to read|driver name)/i;
+const clean=s=>s.replace(/\b(\w) (?=\w\b)/g,"$1").replace(/(\w)- (\w)/g,"$1-$2").replace(/\s+/g," ").replace(/\s+([,.:;!?])/g,"$1").trim();
+const cap=s=>s.charAt(0).toUpperCase()+s.slice(1);
+const titleCase=s=>s.toLowerCase().replace(/\b([a-z])/g,(m,c)=>c.toUpperCase()).replace(/ (And|Or|The|Of|To|In|On|At|For|A|An|With) /g,m=>m.toLowerCase());
+const fixCase=s=>/[a-z]/.test(s)?s:titleCase(s);
+/* a page's heading = the run of largest body-size text (12.5–30 pt), skipping page numbers and masthead */
+function headingRun(its){
+  const cand=its.map((x,i)=>({x,i,h:x.height||0})).filter(o=>o.h>=12.5&&o.h<30&&!/^\d+$/.test(o.x.str.trim())&&!JUNK.test(o.x.str.trim()));
+  if(!cand.length) return null;
+  const max=Math.max(...cand.map(o=>o.h)); const start=cand.find(o=>o.h>=max-0.6);
+  const parts=[]; let end=start.i;
+  for(let i=start.i;i<its.length&&parts.length<5;i++){ const h=its[i].height||0; if(Math.abs(h-start.h)>0.6) break; const t=its[i].str.trim(); if(!t) continue; if(parts[parts.length-1]!==t) parts.push(t); end=i; }
+  if(parts.length>=4&&parts.every(t=>!/\s/.test(t))) return null; /* a word-search grid, not a heading */
+  return {text:clean(parts.join(" ")).slice(0,110), end};
+}
+function pageHeading(its){ const r=headingRun(its); return r?r.text:""; }
+const INCIDENT_WORDS=[[/dropped|disconnect|became detached from the (?:tractor|fifth)|fifth wheel/i,"a dropped trailer"],[/mirror/i,"mirror contact"],[/yellow pole|safety pole|light pole|\bpole\b|bollard/i,"a pole strike"],[/curb/i,"a curb strike"],[/tree|limb|branch/i,"a tree strike"],[/bridge|overpass|canopy|height/i,"an overhead clearance strike"],[/trailer door|swing door|door (?:fell|came off|detached|swung|became)/i,"a trailer door"],[/parked (?:vehicle|car|truck|pickup|trailer|tractor)|stationary trailer/i,"a parked vehicle"],[/sign\b/i,"a sign strike"],[/airline|air line/i,"an air line"],[/landing gear/i,"landing gear"],[/injur/i,"an injury"],[/lane|chang(?:ing|ed) lanes/i,"a lane change"],[/dumpster/i,"a dumpster"]];
+
+/* ---------- automatic details, no AI ---------- */
+function autoFill(){
+  const all=clean(job.texts.join("  "));
+  const last=DATA&&DATA.issues.length?DATA.issues.slice().sort((a,b)=>a.n-b.n).pop():null;
+  const mN=all.match(/(?:ISSUE|NEWSLETTER)\s*#\s*(\d{1,4})/i);
+  const n=mN?+mN[1]:(last?last.n+1:"");
+  const ds=[...all.matchAll(/(January|February|March|April|May|June|July|August|September|October|November|December)\s*(\d{1,2})\s*,\s*(20\d\d)/gi)].map(m=>`${m[3]}-${pad(MONTHS.findIndex(x=>x.toLowerCase()===m[1].toLowerCase())+1)}-${pad(+m[2])}`).sort();
+  let d=ds.length?ds[ds.length-1]:"";
+  if(!d&&last){ const x=new Date(last.d+"T12:00:00"); x.setDate(x.getDate()+7); d=x.toISOString().slice(0,10); }
+  const mI=all.match(/We had\s+(?:(\w+)\s*\(?\s*(\d+)?\s*\)?|(\d+))/i);
+  let inc=""; if(mI){ if(mI[2]) inc=+mI[2]; else if(mI[3]) inc=+mI[3]; else if(mI[1]&&WORDN[mI[1].toLowerCase()]!==undefined) inc=WORDN[mI[1].toLowerCase()]; }
+  // Safety Mindset title + author, from the page whose heading names it
+  let mTitle="", mAuthor="", mPage=-1;
+  job.items.forEach((its,pi)=>{ if(mTitle) return; const r=headingRun(its); if(!r||!/mindset/i.test(r.text)) return;
+    mPage=pi; mTitle=r.text.replace(/^.*?Mindset\s*:?\s*/i,"").replace(/[:\-–—\s]+$/,"");
+    for(let i=r.end+1;i<Math.min(its.length,r.end+5);i++){ const t=its[i].str.trim().replace(/^by:?\s*/i,""); if(/^[A-Z][a-z]+(?:\s[A-Z][a-zA-Z'’\-]+){1,2}$/.test(t)&&t.length<30){ mAuthor=t.replace(/\b([A-Z])([A-Z]+)\b/g,(m,a,b)=>a+b.toLowerCase()); break; } } });
+  // cover theme on page 1 (e.g. "Keep an Eye Out: Equipment Checks Matter")
+  const theme=job.items[0]?pageHeading(job.items[0]):"";
+  // what the incidents involved (page 1)
+  const p1=[...clean(job.texts[0]||"").matchAll(/What happened\s*:?(.*?)(?=What to do|Outcome|$)/gis)].map(m=>m[1]).join(" ")||clean(job.texts[0]||"");
+  const kinds=[]; INCIDENT_WORDS.forEach(([re,label])=>{ if(kinds.length<3&&re.test(p1)&&!kinds.includes(label)) kinds.push(label); });
+  // recognitions and welcomes
+  const names=[...new Set([...all.matchAll(/Congratulat(?:e|ions)[^A-Z]{0,20}((?:Mr\.|Ms\.)?\s?[A-Z][a-z]+ [A-Z][a-zA-Z]+)/g)].map(m=>m[1].trim().replace(/^(Mr\.|Ms\.)\s?/,"")))].filter(x=>!/Our Drivers|The Team/i.test(x)).slice(0,3);
+  const welcome=all.match(/welcom(?:e|ing)\s+(?:our\s+)?(\d+|one|two|three|four|five|six|seven|eight|nine|ten)\s+new/i);
+  const extra=job.heads.map((h,i)=>({h,i})).filter(o=>o.i>0&&o.i!==mPage&&o.h&&!/mindset/i.test(o.h)&&!/crossword|word search|scramble|hidden word|quiz/i.test(o.h)).map(o=>fixCase(o.h).replace(/\s*Did You Know\?$/i,""));
+  const list=a=>a.length>2?a.slice(0,-1).join(", ")+", and "+a[a.length-1]:a.join(" and ");
+  // synopsis
+  const S=[];
+  if(inc===0) S.push("A zero-accident week.");
+  else if(inc!=="") S.push(`${inc} preventable accident${inc===1?"":"s"} this week${kinds.length?", involving "+list(kinds):""}.`);
+  if(mTitle) S.push(`The Safety Mindset article, "${cap(mTitle).replace(/[.!]+$/,"")}," ${mAuthor?"is by "+mAuthor+".":"leads the issue."}`);
+  const also=[]; if(names.length) also.push("congratulations to "+list(names)); if(welcome) also.push(`a welcome for ${welcome[1]} new drivers`);
+  extra.slice(0,2).forEach(h=>{ if(!also.some(a=>a.toLowerCase().includes(h.toLowerCase().slice(0,12)))) also.push(h.replace(/[!.]+$/,"")); });
+  if(also.length) S.push("Also inside: "+list(also)+".");
+  // features
+  const F=[];
+  if(inc!=="") F.push(inc===0?"Safety Snapshot: zero preventable accidents":`Safety Snapshot: ${inc} preventable accident${inc===1?"":"s"}`);
+  if(mTitle) F.push(`Safety Mindset: ${cap(mTitle)}${mAuthor?", by "+mAuthor:""}`);
+  extra.slice(0,3).forEach(h=>F.push(cap(h).replace(/[!.]+$/,"")));
+  if(names.length) F.push("Congratulations: "+names.join(", "));
+  const counts=Object.entries(TOPIC_WORDS).map(([k,re])=>[k,(all.match(re)||[]).length]).filter(x=>x[1]>0).sort((a,b)=>b[1]-a[1]).slice(0,4).map(x=>x[0]);
+  const title=mTitle||(theme&&!/^safety snapshot/i.test(theme)?fixCase(theme):"")||(extra[0]||"");
+  $("fN").value=n; $("fD").value=d; $("fInc").value=inc;
+  $("fT").value=cap(title).replace(/[!.]+$/,"").slice(0,90);
+  $("fS").value=S.join(" "); $("fF").value=[...new Set(F)].join("\n");
+  document.querySelectorAll("#fTopics .chip").forEach(c=>c.setAttribute("aria-pressed",counts.includes(c.dataset.k)));
+}
+function renderTopics(){
+  if(!DATA||$("fTopics").childElementCount) return;
+  $("fTopics").innerHTML=Object.entries(DATA.topics).map(([k,v])=>`<button class="chip" type="button" data-k="${k}" aria-pressed="false">${esc(v)}</button>`).join("");
+  $("fTopics").addEventListener("click",e=>{const b=e.target.closest(".chip"); if(b) b.setAttribute("aria-pressed",b.getAttribute("aria-pressed")!=="true")});
+  if(job) autoFill();
+}
+
+/* ---------- publish ---------- */
+$("pubBtn").onclick=async()=>{
+  if(busy||!job) return;
+  if(!connected()){ msg("upMsg","err","Connect to GitHub (step 1) first."); return; }
+  const n=parseInt($("fN").value,10), d=$("fD").value, t=$("fT").value.trim(), s=$("fS").value.trim();
+  const f=$("fF").value.split("\n").map(x=>x.trim()).filter(Boolean);
+  const tags=[...document.querySelectorAll('#fTopics .chip[aria-pressed="true"]')].map(c=>c.dataset.k);
+  const inc=$("fInc").value===""?0:Math.max(0,parseInt($("fInc").value,10)||0);
+  if(!n||n<1) return msg("upMsg","err","Enter the issue number.");
+  if(!/^\d{4}-\d{2}-\d{2}$/.test(d)) return msg("upMsg","err","Enter the issue date.");
+  if(!t) return msg("upMsg","err","Enter a title for the cover.");
+  if(!s) return msg("upMsg","err","Enter a short synopsis. It's what people see when they hover over the cover.");
+  busy=true; $("pubBtn").disabled=true; msg("upMsg");
+  try{
+    await loadIssues();
+    const old=DATA.issues.find(x=>x.n===n);
+    if(old&&!$("pubBtn").dataset.ok){ $("pubBtn").dataset.ok="1"; busy=false; $("pubBtn").disabled=false; $("pubBtn").textContent="Replace issue #"+n; return msg("upMsg","err",`Issue #${n} is already in the library. Click <b>Replace issue #${n}</b> to overwrite it, or change the number.`); }
+    const rec={n,d,p:job.pages.length,inc,t,tags,s,f}; if(old) rec.v=Date.now();
+    const files=[{path:`covers/c${pad(n)}-1.jpg`,blob:job.cover}];
+    job.pages.forEach((b,i)=>files.push({path:`pages/n${pad(n)}-${i+1}.jpg`,blob:b}));
+    if(old&&old.p>job.pages.length) for(let i=job.pages.length+1;i<=old.p;i++) files.push({path:`pages/n${pad(n)}-${i}.jpg`,del:true});
+    files.push({path:"issues.json",text:issuesJson(DATA.issues.filter(x=>x.n!==n).concat([rec]))});
+    await commit(files,`${old?"Replace":"Add"} issue #${n} (${d})`,(i,tot)=>progress(i/tot,i<tot-1?`Uploading ${i+1} of ${tot-1} images…`:"Saving the library…"));
+    progress(1,"Published.");
+    msg("upMsg","ok",`Issue #${n} is published. It shows up in the library in about a minute. <a href="./#issue-${n}" target="_blank" rel="noopener">Open it</a>`);
+    await loadIssues();
+  }catch(e){
+    $("prog").hidden=true;
+    msg("upMsg","err", e.status===409||e.status===422?"The library changed while you were publishing. Click Publish again.":e.status===401?"GitHub stopped accepting the access key. It may have expired; make a new one and reconnect.":e.status===403?"This access key can't save to the repository. Give it Contents: Read and write.":"Publishing didn't finish: "+esc(e.message||"unknown error")+". Nothing was changed if this happened before \"Saving the library\". Try again.");
+  }
+  busy=false; $("pubBtn").disabled=false; $("pubBtn").textContent="Publish to the library"; delete $("pubBtn").dataset.ok;
+};
+
+/* ---------- manage ---------- */
+function renderList(){
+  const L=DATA.issues.slice().sort((a,b)=>b.n-a.n);
+  $("mList").innerHTML=L.map(x=>`<div class="item"><img src="covers/c${pad(x.n)}-1.jpg${x.v?"?v="+x.v:""}" alt="" loading="lazy"><div><b>#${x.n} · ${esc(x.t)}</b><span>${esc(x.d)} · ${x.p} pages</span></div><button class="btn btn-del" type="button" data-del="${x.n}">Remove</button></div>`).join("")||"<p>No issues yet.</p>";
+}
+$("mList").addEventListener("click",async e=>{
+  const b=e.target.closest("[data-del]"); if(!b||busy) return;
+  if(!b.classList.contains("armed")){ b.classList.add("armed"); b.textContent="Confirm remove"; return; }
+  const n=+b.dataset.del; busy=true; b.disabled=true; b.textContent="Removing…";
+  try{
+    await loadIssues(); const old=DATA.issues.find(x=>x.n===n);
+    if(old){
+      const files=[{path:"issues.json",text:issuesJson(DATA.issues.filter(x=>x.n!==n))},{path:`covers/c${pad(n)}-1.jpg`,del:true}];
+      for(let i=1;i<=old.p;i++) files.push({path:`pages/n${pad(n)}-${i}.jpg`,del:true});
+      await commit(files,`Remove issue #${n}`);
+    }
+    msg("mMsg","ok",`Issue #${n} was removed. The library updates in about a minute.`); await loadIssues();
+  }catch(err){ msg("mMsg","err","Removing didn't finish: "+esc(err.message||"")); renderList(); }
+  busy=false;
+});
+
+/* ---------- bulk setup upload ---------- */
+$("bulkBtn").onclick=async()=>{
+  if(busy) return; if(!connected()) return msg("bulkMsg","err","Connect to GitHub (step 1) first.");
+  const fl=[...$("bulkFiles").files].filter(f=>!/(^|\/)\./.test(f.webkitRelativePath||f.name));
+  if(!fl.length) return msg("bulkMsg","err","Choose a folder first.");
+  busy=true; $("bulkBtn").disabled=true;
+  try{
+    const all=fl.map(f=>({path:f.webkitRelativePath||f.name,blob:f}));
+    for(let i=0;i<all.length;i+=60){
+      const part=all.slice(i,i+60);
+      await commit(part,`Setup upload ${i+1}-${i+part.length} of ${all.length}`,(j)=>msg("bulkMsg","ok",`Uploading ${i+j+1} of ${all.length}…`));
+    }
+    msg("bulkMsg","ok",`Done. ${all.length} files uploaded.`);
+  }catch(e){ msg("bulkMsg","err","The upload stopped: "+esc(e.message||"")+". Run it again; files already uploaded are simply overwritten."); }
+  busy=false; $("bulkBtn").disabled=false;
+};
+})();
+</script>
+</body>
+</html>

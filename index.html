@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Transervice Safety Newsletter Library</title>
+<meta name="description" content="Every weekly Transervice driver safety newsletter in one place.">
+<meta name="theme-color" content="#0d0f14">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="brand/icon-192.png">
+<link rel="apple-touch-icon" href="brand/icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Safety Library">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<style>
+@font-face{font-family:'Barlow';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/barlow-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'Barlow';font-style:normal;font-weight:500;font-display:swap;src:url(fonts/barlow-latin-500-normal.woff2) format('woff2')}
+@font-face{font-family:'Barlow';font-style:normal;font-weight:600;font-display:swap;src:url(fonts/barlow-latin-600-normal.woff2) format('woff2')}
+@font-face{font-family:'Barlow Condensed';font-style:normal;font-weight:500;font-display:swap;src:url(fonts/barlow-condensed-latin-500-normal.woff2) format('woff2')}
+@font-face{font-family:'Barlow Condensed';font-style:normal;font-weight:600;font-display:swap;src:url(fonts/barlow-condensed-latin-600-normal.woff2) format('woff2')}
+@font-face{font-family:'Barlow Condensed';font-style:normal;font-weight:700;font-display:swap;src:url(fonts/barlow-condensed-latin-700-normal.woff2) format('woff2')}
+@font-face{font-family:'Barlow Condensed';font-style:normal;font-weight:800;font-display:swap;src:url(fonts/barlow-condensed-latin-800-normal.woff2) format('woff2')}
+
+/* Layout: a highway-lit hero with the fleet truck, then month-by-month shelves of issue covers; hover a cover for its synopsis, click to read. */
+:root{
+  --bg:#0d0f14; --bg-2:#151821; --shelf:#1c2029; --line:#2a2f3b;
+  --fg:#f1efe9; --muted:#a29d93; --gold:#f5c000; --gold-dim:#b08800; --gold-lt:#ffd84a;
+  --ink-on-gold:#14120a; --ok:#3fbf7f; --warn:#ff8a3d;
+  --card:#181b23; --shadow:0 18px 40px rgba(0,0,0,.55);
+  --display:"Barlow Condensed","Arial Narrow",Impact,sans-serif;
+  --body:"Barlow","Segoe UI",system-ui,sans-serif;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: light){ :root:not([data-theme="dark"]){
+  --bg:#f4f2ec; --bg-2:#e9e6dd; --shelf:#ddd8cc; --line:#cfc9bb;
+  --fg:#16181d; --muted:#6a655b; --gold:#e2b100; --gold-dim:#8a6b00; --gold-lt:#b58e00;
+  --ink-on-gold:#14120a; --ok:#1d8a55; --warn:#c4570f; --card:#ffffff; --shadow:0 14px 34px rgba(40,30,0,.22);
+  color-scheme:light; } }
+:root[data-theme="light"]{
+  --bg:#f4f2ec; --bg-2:#e9e6dd; --shelf:#ddd8cc; --line:#cfc9bb;
+  --fg:#16181d; --muted:#6a655b; --gold:#e2b100; --gold-dim:#8a6b00; --gold-lt:#b58e00;
+  --ink-on-gold:#14120a; --ok:#1d8a55; --warn:#c4570f; --card:#ffffff; --shadow:0 14px 34px rgba(40,30,0,.22);
+  color-scheme:light; }
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{background:var(--bg);color:var(--fg)}
+body{font-family:var(--body);font-size:16px;line-height:1.5;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--bg)}
+.wrap{max-width:1280px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+
+/* HERO */
+.hero{position:relative;overflow:hidden;background:#0d0f14;color:#f1efe9;border-bottom:4px solid var(--gold)}
+.hero-img{position:absolute;inset:0 0 0 auto;width:min(62%,820px);overflow:hidden;pointer-events:none}
+.hero-img .photo{position:absolute;inset:0;background:url(brand/truck.jpg) center/cover no-repeat;transform-origin:70% 75%;animation:pullin 2.2s cubic-bezier(.16,.8,.24,1) both,cruise 9s ease-in-out 2.2s infinite alternate}
+@keyframes pullin{from{transform:translateX(-55%) scale(.9)}to{transform:none}}
+@keyframes cruise{0%{transform:none}50%{transform:translate(1.5%,-.4%) scale(1.04)}100%{transform:translate(3%,0) scale(1.08)}}
+.hero-img::after{z-index:1}
+.hero-img::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#0d0f14 0%,rgba(13,15,20,.85) 22%,rgba(13,15,20,.1) 60%,rgba(13,15,20,0) 100%)}
+.road{position:absolute;left:0;right:0;bottom:0;height:6px;background:repeating-linear-gradient(90deg,var(--gold) 0 38px,transparent 38px 70px);opacity:.9;animation:road 1.6s linear infinite}
+@keyframes road{to{background-position:-70px 0}}
+@media (prefers-reduced-motion:reduce){.road,.hero-img .photo{animation:none}}
+.hero .wrap{position:relative;z-index:2;padding-block:28px 40px;display:flex;flex-direction:column;gap:18px;min-height:360px}
+.brandrow{display:flex;align-items:center;gap:14px}
+.brandrow img{height:44px;width:auto;filter:drop-shadow(0 1px 0 rgba(0,0,0,.4))}
+.est{font:600 12px/1 var(--display);letter-spacing:.18em;text-transform:uppercase;color:#f5c000;border:1px solid rgba(245,192,0,.5);padding:5px 8px;border-radius:2px}
+.eyebrow{font:600 14px/1.2 var(--display);letter-spacing:.2em;text-transform:uppercase;color:#f5c000;margin:18px 0 0}
+h1{font:800 clamp(40px,6.2vw,80px)/.92 var(--display);letter-spacing:-.01em;text-transform:uppercase;margin:0;max-width:12ch;text-wrap:balance}
+h1 span{color:#f5c000}
+.lede{max-width:46ch;color:#cfcac0;margin:0;font-size:17px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.btn{display:inline-flex;align-items:center;gap:8px;border:0;cursor:pointer;padding:11px 18px;border-radius:3px;font:700 16px/1 var(--display);letter-spacing:.08em;text-transform:uppercase}
+.btn-gold{background:#f5c000;color:#14120a}
+.btn-gold:hover{background:#ffd84a}
+.btn-ghost{background:rgba(13,15,20,.55);color:#f1efe9;box-shadow:inset 0 0 0 1px rgba(241,239,233,.35)}
+.btn-ghost:hover{box-shadow:inset 0 0 0 1px #f5c000;color:#f5c000}
+.btn svg{width:18px;height:18px}
+
+/* DASHBOARD STRIP */
+.strip{background:var(--bg-2);border-bottom:1px solid var(--line)}
+.strip .wrap{display:grid;grid-template-columns:auto 1fr;gap:28px;padding-block:18px;align-items:center}
+.stats{display:flex;gap:28px}
+.stat b{display:block;font:700 34px/1 var(--display);font-variant-numeric:tabular-nums}
+.stat span{font:600 12px/1.2 var(--display);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.trend{min-width:0}
+.trend-head{display:flex;justify-content:space-between;gap:12px;font:600 12px/1 var(--display);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.trend svg{display:block;width:100%;height:64px}
+.trend .bar{fill:var(--gold);cursor:pointer}
+.trend .bar:hover{fill:var(--gold-lt)}
+.trend .zero{fill:var(--ok);cursor:pointer}
+.trend .grid{stroke:var(--line);stroke-width:1}
+.trend text{fill:var(--muted);font:600 10px var(--display)}
+
+/* TOOLBAR */
+.tools{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.tools .wrap{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center;padding-block:12px}
+.search{position:relative;flex:1 1 240px;max-width:360px}
+.search input{width:100%;background:var(--card);color:var(--fg);border:1px solid var(--line);border-radius:3px;padding:10px 12px 10px 36px;font:500 15px var(--body)}
+.search input:focus{border-color:var(--gold);outline:none}
+.search svg{position:absolute;left:11px;top:50%;width:16px;height:16px;transform:translateY(-50%);color:var(--muted)}
+.chips{display:flex;gap:6px;flex-wrap:wrap;flex:1 1 400px}
+.chip{border:1px solid var(--line);background:transparent;border-radius:999px;padding:6px 12px;font:600 13px/1 var(--display);letter-spacing:.06em;text-transform:uppercase;cursor:pointer;color:var(--muted)}
+.chip:hover{color:var(--fg);border-color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--gold);color:var(--ink-on-gold);border-color:var(--gold)}
+.sort{margin-left:auto;display:flex;border:1px solid var(--line);border-radius:3px;overflow:hidden}
+.sort button{background:transparent;border:0;padding:7px 12px;font:600 13px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;cursor:pointer;color:var(--muted)}
+.sort button[aria-pressed="true"]{background:var(--fg);color:var(--bg)}
+.count{font:600 13px var(--display);letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
+
+/* SHELVES */
+main{padding-block:26px 60px}
+.shelf{margin-bottom:34px}
+.shelf-label{display:flex;align-items:baseline;gap:12px;margin:0 0 12px}
+.shelf-label h2{font:700 26px/1 var(--display);text-transform:uppercase;letter-spacing:.03em;margin:0}
+.shelf-label small{font:600 13px var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.row{display:flex;gap:22px;align-items:flex-end;flex-wrap:wrap;padding:0 14px 0;position:relative}
+.board{height:16px;margin-top:-2px;background:linear-gradient(var(--gold) 0 3px,var(--shelf) 3px);border-radius:0 0 3px 3px;box-shadow:0 10px 18px -8px rgba(0,0,0,.5)}
+.book{position:relative;width:150px;flex:0 0 auto;border:0;padding:0;background:none;cursor:pointer;text-align:left;transform-origin:bottom center;transition:transform .2s ease}
+.book .cover{display:block;width:100%;height:auto;aspect-ratio:1300/1683;object-fit:cover;background:var(--card);border-radius:2px 4px 4px 2px;box-shadow:var(--shadow);border-left:5px solid var(--gold-dim)}
+.book .tag{position:absolute;top:8px;left:-6px;background:var(--gold);color:var(--ink-on-gold);font:800 14px/1 var(--display);padding:5px 8px 4px;letter-spacing:.04em;box-shadow:0 2px 6px rgba(0,0,0,.35)}
+.book .meta{display:block;padding:9px 0 10px}
+.book .meta b{display:block;font:700 15px/1.15 var(--display);text-transform:uppercase;letter-spacing:.02em;color:var(--fg);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:2.3em}
+.book .meta span{font:500 13px var(--body);color:var(--muted);font-variant-numeric:tabular-nums}
+.book:hover,.book:focus-visible{transform:translateY(-8px) rotate(-1deg)}
+.book.latest .cover{border-left-color:var(--gold)}
+.ribbon{position:absolute;top:-4px;right:8px;background:var(--warn);color:#fff;font:700 11px/1 var(--display);letter-spacing:.12em;padding:10px 6px 12px;text-transform:uppercase;clip-path:polygon(0 0,100% 0,100% 100%,50% 82%,0 100%)}
+.empty{padding:60px 0;text-align:center;color:var(--muted)}
+
+/* HOVER SYNOPSIS */
+.peek{position:fixed;z-index:50;width:min(360px,calc(100vw - 32px));background:var(--card);color:var(--fg);border:1px solid var(--line);border-top:4px solid var(--gold);border-radius:4px;box-shadow:var(--shadow);padding:16px 18px 16px;pointer-events:none;opacity:0;transform:translateY(6px);transition:opacity .14s,transform .14s}
+.peek.on{opacity:1;transform:none}
+.peek .k{font:600 12px/1 var(--display);letter-spacing:.16em;text-transform:uppercase;color:var(--gold-lt)}
+.peek h3{font:700 22px/1.05 var(--display);text-transform:uppercase;margin:6px 0 8px;text-wrap:balance}
+.peek p{margin:0 0 10px;font-size:14.5px;line-height:1.5;color:var(--fg)}
+.peek ul{margin:0;padding:0;list-style:none;display:grid;gap:4px;border-top:1px solid var(--line);padding-top:10px}
+.peek li{font-size:13px;color:var(--muted);padding-left:14px;position:relative}
+.peek li::before{content:"";position:absolute;left:0;top:.6em;width:6px;height:6px;background:var(--gold);transform:rotate(45deg)}
+.pill{display:inline-flex;align-items:center;gap:6px;font:700 12px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;padding:5px 8px;border-radius:2px;margin-left:8px;vertical-align:1px}
+.pill.z{background:color-mix(in srgb,var(--ok) 20%,transparent);color:var(--ok)}
+.pill.n{background:color-mix(in srgb,var(--warn) 18%,transparent);color:var(--warn)}
+.peek .hint{display:block;margin-top:10px;font:600 12px var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.peek .actions{display:none}
+
+/* touch: synopsis becomes a bottom sheet */
+@media (hover:none){
+  .peek{left:0!important;right:0;top:auto!important;bottom:0;width:auto;border-radius:12px 12px 0 0;pointer-events:auto;padding:18px max(18px,env(safe-area-inset-right,0px)) calc(18px + env(safe-area-inset-bottom,0px)) max(18px,env(safe-area-inset-left,0px));transform:translateY(100%)}
+  .peek.on{transform:none}
+  .peek .hint{display:none}
+  .peek .actions{display:flex;gap:10px;margin-top:14px}
+  .peek .actions .btn{flex:1;justify-content:center}
+  .scrim{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:45}
+}
+
+/* READER */
+.reader{position:fixed;inset:0;z-index:70;background:#0b0c10;color:#f1efe9;display:flex;flex-direction:column}
+.rbar{display:flex;align-items:center;gap:10px;padding:10px max(14px,env(safe-area-inset-right,0px)) 10px max(14px,env(safe-area-inset-left,0px));padding-top:calc(10px + env(safe-area-inset-top,0px));background:#0d0f14;border-bottom:3px solid #f5c000;flex-wrap:wrap}
+.rbar .ttl{flex:1 1 200px;min-width:0}
+.rbar .ttl b{display:block;font:700 20px/1.05 var(--display);text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rbar .ttl span{font:600 12px var(--display);letter-spacing:.14em;text-transform:uppercase;color:#f5c000}
+.ibtn{background:transparent;border:1px solid rgba(241,239,233,.25);color:#f1efe9;border-radius:3px;height:38px;min-width:38px;padding:0 10px;display:inline-flex;align-items:center;justify-content:center;gap:6px;cursor:pointer;font:600 14px var(--display);letter-spacing:.08em;text-transform:uppercase}
+.ibtn:hover{border-color:#f5c000;color:#f5c000}
+.ibtn:disabled{opacity:.35;cursor:default;border-color:rgba(241,239,233,.25);color:#f1efe9}
+.ibtn svg{width:18px;height:18px}
+.pages{flex:1;overflow:auto;padding:22px max(12px,env(safe-area-inset-right,0px)) calc(40px + env(safe-area-inset-bottom,0px)) max(12px,env(safe-area-inset-left,0px));display:flex;flex-direction:column;align-items:center;gap:18px;overscroll-behavior:contain}
+.pages img{width:100%;max-width:900px;height:auto;aspect-ratio:1300/1683;background:#1a1c22;box-shadow:0 10px 30px rgba(0,0,0,.6);border-radius:2px}
+.pages.zoom img{max-width:1600px}
+.pgnum{font:600 12px var(--display);letter-spacing:.14em;color:#8d887e;text-transform:uppercase;margin-top:-10px}
+.endcap{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;padding:10px 0 0}
+
+/* QR MODAL */
+.modal{position:fixed;inset:0;z-index:80;background:rgba(5,6,8,.72);display:grid;place-items:center;padding:20px}
+.qrcard{background:#fff;color:#14120a;width:min(380px,100%);border-radius:6px;overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,.6);text-align:center}
+.qrcard header{background:#0d0f14;padding:16px 18px;border-bottom:4px solid #f5c000}
+.qrcard header img{height:34px;width:auto}
+.qrbox{padding:22px 22px 8px;display:grid;place-items:center}
+.qrbox svg{width:240px;height:240px;display:block}
+.qrcard h4{font:800 26px/1 var(--display);text-transform:uppercase;margin:8px 18px 4px}
+.qrcard p{margin:0 18px 12px;font-size:14px;color:#55504a}
+.qrcard .url{display:block;margin:0 18px 14px;font:500 12px/1.4 ui-monospace,Menlo,monospace;word-break:break-all;color:#55504a;user-select:all;background:#f2efe6;padding:8px;border-radius:3px}
+.qrcard .row2{display:flex;gap:8px;padding:0 18px 18px}
+.qrcard .row2 button{flex:1;border:0;border-radius:3px;padding:11px;font:700 15px var(--display);letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+.qrcard .row2 .p{background:#f5c000;color:#14120a}
+.qrcard .row2 .s{background:#14120a;color:#fff}
+
+
+@media (max-width:760px){
+  .hero-img{width:100%;opacity:.45}
+  .hero-img::after{background:linear-gradient(180deg,rgba(13,15,20,.3),#0d0f14 92%)}
+  .hero .wrap{min-height:0}
+  .strip .wrap{grid-template-columns:1fr;gap:14px}
+  .stats{gap:20px}
+  .row{gap:14px;padding:0 6px;justify-content:flex-start}
+  .book{width:calc((100% - 14px)/2)}
+  .sort{margin-left:0}
+  .chips{flex-wrap:nowrap;overflow-x:auto;flex-basis:100%;padding-bottom:2px;scrollbar-width:none}
+  .chip{flex:0 0 auto}
+  .search{max-width:none}
+  .rbar .hide-sm{display:none}
+}
+@media (min-width:761px) and (max-width:1040px){ .book{width:136px} }
+
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+img{max-width:100%}
+</style>
+</head>
+<body>
+
+
+<header class="hero">
+  <div class="hero-img" role="img" aria-label="Transervice tractor-trailer on the highway at sunrise"><div class="photo"></div></div>
+  <div class="wrap">
+    <div class="brandrow"><img src="brand/logo.png" alt="Transervice: A History of Service, A Tradition of Excellence"><span class="est">Kroger Atlanta</span></div>
+    <p class="eyebrow">Transportation Safety · Weekly Newsletter</p>
+    <h1>Transervice Safety Newsletter <span>Library</span></h1>
+    <p class="lede">Every weekly issue in one place. Hover a cover for the synopsis, click to read the full newsletter.</p>
+    <div class="hero-actions">
+      <button class="btn btn-gold" id="openLatest" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 5h6a3 3 0 0 1 3 3v12a2 2 0 0 0-2-2H4zM20 5h-6a3 3 0 0 0-3 3v12a2 2 0 0 1 2-2h7z"/></svg>Read the latest issue</button>
+      <button class="btn btn-ghost" id="qrLib" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3h-3zM20 14v1M14 20h1M17 17h4v4h-4z"/></svg>Scan to open</button>
+    </div>
+  </div>
+  <div class="road" aria-hidden="true"></div>
+</header>
+
+<section class="strip" aria-label="Library summary">
+  <div class="wrap">
+    <div class="stats">
+      <div class="stat"><b id="sIssues">48</b><span>Issues</span></div>
+      <div class="stat"><b id="sZero">4</b><span>Zero-accident weeks</span></div>
+      <div class="stat"><b id="sLatest">#49</b><span id="sLatestD">Latest</span></div>
+    </div>
+    <div class="trend">
+      <div class="trend-head"><span>Safety Snapshot · preventable accidents reported each week</span><span id="trendRange"></span></div>
+      <svg id="trend" viewBox="0 0 960 64" preserveAspectRatio="none" role="img" aria-label="Preventable accidents reported per issue"></svg>
+    </div>
+  </div>
+</section>
+
+<nav class="tools" aria-label="Find an issue">
+  <div class="wrap">
+    <label class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="q" type="search" placeholder="Search topics, drivers, issue #" aria-label="Search the newsletters"></label>
+    <div class="chips" id="chips" role="group" aria-label="Filter by topic"></div>
+    <span class="count" id="count"></span>
+    <div class="sort" role="group" aria-label="Sort"><button type="button" id="sortNew" aria-pressed="true">Newest</button><button type="button" id="sortOld" aria-pressed="false">Oldest</button></div>
+  </div>
+</nav>
+
+<main class="wrap" id="shelves"></main>
+
+<div class="peek" id="peek" role="dialog" aria-live="polite"></div>
+<div class="scrim" id="scrim" hidden></div>
+
+<div class="reader" id="reader" hidden role="dialog" aria-modal="true" aria-labelledby="rTitle">
+  <div class="rbar">
+    <button class="ibtn" id="rClose" type="button" aria-label="Back to library"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 5l-7 7 7 7"/></svg><span class="hide-sm">Library</span></button>
+    <div class="ttl"><span id="rKicker"></span><b id="rTitle"></b></div>
+    <button class="ibtn" id="rPrev" type="button" aria-label="Previous issue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 5l-7 7 7 7"/></svg><span class="hide-sm">Older</span></button>
+    <button class="ibtn" id="rNext" type="button" aria-label="Next issue"><span class="hide-sm">Newer</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 5l7 7-7 7"/></svg></button>
+    <button class="ibtn hide-sm" id="rZoom" type="button" aria-pressed="false">Zoom</button>
+    <button class="ibtn" id="rQR" type="button" aria-label="QR code for this issue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3h-3zM17 17h4v4h-4z"/></svg></button>
+  </div>
+  <div class="pages" id="pages"></div>
+</div>
+
+<div class="modal" id="qrModal" hidden>
+  <div class="qrcard" role="dialog" aria-modal="true" aria-labelledby="qrTitle">
+    <header><img src="brand/logo.png" alt="Transervice"></header>
+    <div class="qrbox" id="qrBox"></div>
+    <h4 id="qrTitle">Safety Newsletter Library</h4>
+    <p id="qrSub">Scan with your phone camera to open.</p>
+    <span class="url" id="qrUrl"></span>
+    <div class="row2"><button class="p" id="qrCopy" type="button">Copy link</button><button class="s" id="qrClose" type="button">Close</button></div>
+  </div>
+</div>
+
+<script src="lib/qrcode.js"></script>
+<script>
+(function(){
+const APP_URL = location.origin + location.pathname.replace(/index\.html$/,"");
+function boot(DATA){
+const I = DATA.issues.filter(x=>x&&x.n&&x.d&&x.p).sort((a,b)=>a.n-b.n);
+const T = DATA.topics;
+const coverSrc=x=>`covers/c${String(x.n).padStart(2,"0")}-1.jpg${x.v?"?v="+x.v:""}`;
+const pageSrc=(x,p)=>`pages/n${String(x.n).padStart(2,"0")}-${p}.jpg${x.v?"?v="+x.v:""}`;
+const byN = Object.fromEntries(I.map(x=>[x.n,x]));
+const latest = I[I.length-1];
+const MONTHS=["January","February","March","April","May","June","July","August","September","October","November","December"];
+const pad=n=>String(n).padStart(2,"0");
+const fmt=d=>{const [y,m,dd]=d.split("-").map(Number);return `${MONTHS[m-1].slice(0,3)} ${dd}, ${y}`};
+const fmtLong=d=>{const [y,m,dd]=d.split("-").map(Number);return `${MONTHS[m-1]} ${dd}, ${y}`};
+const esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const hover = matchMedia("(hover:hover)").matches;
+let state={q:"",topic:"all",order:"new"};
+
+/* stats */
+document.getElementById("sIssues").textContent=I.length;
+document.getElementById("sZero").textContent=I.filter(x=>x.inc===0).length;
+document.getElementById("sLatest").textContent="#"+latest.n;
+document.getElementById("sLatestD").textContent="Latest · "+fmt(latest.d);
+
+/* trend chart (issue #1 was a recap of past incidents, so the weekly series starts at #2) */
+(function(){
+  const svg=document.getElementById("trend"); const S=I.filter(x=>x.n>1);
+  const W=960,H=64,top=6,bot=14,max=Math.max(...S.map(x=>x.inc));
+  const bw=W/S.length; let h="";
+  [1,3,5].forEach(v=>{const y=top+(H-top-bot)*(1-v/max);h+=`<line class="grid" x1="0" x2="${W}" y1="${y}" y2="${y}"/>`});
+  S.forEach((x,i)=>{
+    const bh=(H-top-bot)*(x.inc/max), X=i*bw+bw*.18, w=bw*.64;
+    if(x.inc===0) h+=`<rect class="zero" data-n="${x.n}" x="${X}" y="${H-bot-3}" width="${w}" height="3"><title>Issue #${x.n} · ${fmt(x.d)} · zero preventable accidents</title></rect>`;
+    else h+=`<rect class="bar" data-n="${x.n}" x="${X}" y="${H-bot-bh}" width="${w}" height="${bh}"><title>Issue #${x.n} · ${fmt(x.d)} · ${x.inc} preventable</title></rect>`;
+  });
+  h+=`<text x="0" y="${H-2}">#${S[0].n}</text><text x="${W}" y="${H-2}" text-anchor="end">#${S[S.length-1].n}</text><text x="${W/2}" y="${H-2}" text-anchor="middle">max ${max} / week</text>`;
+  svg.innerHTML=h;
+  svg.addEventListener("click",e=>{const n=e.target.getAttribute("data-n"); if(n) openReader(+n)});
+  document.getElementById("trendRange").textContent=`${fmt(S[0].d)} – ${fmt(S[S.length-1].d)}`;
+})();
+
+/* chips */
+const chips=document.getElementById("chips");
+chips.innerHTML=[["all","All issues"],...Object.entries(T)].map(([k,v])=>`<button class="chip" type="button" data-t="${k}" aria-pressed="${k==="all"}">${v}</button>`).join("");
+chips.addEventListener("click",e=>{const b=e.target.closest(".chip"); if(!b) return; state.topic=b.dataset.t; chips.querySelectorAll(".chip").forEach(c=>c.setAttribute("aria-pressed",c===b)); render(); save();});
+document.getElementById("q").addEventListener("input",e=>{state.q=e.target.value.trim().toLowerCase(); render();});
+const sN=document.getElementById("sortNew"), sO=document.getElementById("sortOld");
+sN.onclick=()=>{state.order="new";sN.setAttribute("aria-pressed",true);sO.setAttribute("aria-pressed",false);render();save()};
+sO.onclick=()=>{state.order="old";sO.setAttribute("aria-pressed",true);sN.setAttribute("aria-pressed",false);render();save()};
+function save(){try{localStorage.setItem("tsl",JSON.stringify({topic:state.topic,order:state.order}))}catch(e){}}
+try{const s=JSON.parse(localStorage.getItem("tsl")||"null"); if(s){state.topic=s.topic||"all";state.order=s.order||"new"; chips.querySelectorAll(".chip").forEach(c=>c.setAttribute("aria-pressed",c.dataset.t===state.topic)); sN.setAttribute("aria-pressed",state.order==="new"); sO.setAttribute("aria-pressed",state.order==="old");}}catch(e){}
+
+/* shelves */
+const shelves=document.getElementById("shelves");
+function matches(x){
+  if(state.topic!=="all" && !x.tags.includes(state.topic)) return false;
+  if(!state.q) return true;
+  const q=state.q.replace(/^#/,"");
+  if(/^\d+$/.test(q)) return String(x.n)===q || String(x.n).startsWith(q);
+  return (x.t+" "+x.s+" "+x.f.join(" ")+" "+fmtLong(x.d)).toLowerCase().includes(state.q);
+}
+function render(){
+  let L=I.filter(matches); if(state.order==="new") L=L.slice().reverse();
+  document.getElementById("count").textContent=`${L.length} of ${I.length}`;
+  if(!L.length){shelves.innerHTML=`<p class="empty">No issues match that search. Try another word, or pick All issues.</p>`;return}
+  const groups=[]; L.forEach(x=>{const k=x.d.slice(0,7); let g=groups[groups.length-1]; if(!g||g.k!==k){g={k,items:[]};groups.push(g)} g.items.push(x)});
+  shelves.innerHTML=groups.map(g=>{const [y,m]=g.k.split("-").map(Number);
+    return `<section class="shelf"><div class="shelf-label"><h2>${MONTHS[m-1]} ${y}</h2><small>${g.items.length} issue${g.items.length>1?"s":""}</small></div>
+    <div class="row">${g.items.map(book).join("")}</div><div class="board"></div></section>`}).join("");
+}
+function book(x){
+  return `<button class="book${x===latest?" latest":""}" type="button" data-n="${x.n}" aria-label="Issue ${x.n}, ${fmtLong(x.d)}: ${esc(x.t)}">
+    <img class="cover" src="${coverSrc(x)}" alt="" loading="lazy" width="520" height="673">
+    <span class="tag">#${x.n}</span>${x===latest?'<span class="ribbon">New</span>':""}
+    <span class="meta"><b>${esc(x.t)}</b><span>${fmt(x.d)}</span></span></button>`;
+}
+render();
+
+/* synopsis peek */
+const peek=document.getElementById("peek"), scrim=document.getElementById("scrim");
+let peekN=null, hideT=null;
+function fillPeek(x){
+  const pill=x.inc===0?`<span class="pill z">Zero accidents</span>`:`<span class="pill n">${x.inc} preventable</span>`;
+  peek.innerHTML=`<span class="k">Issue #${x.n} · ${fmtLong(x.d)}${pill}</span><h3>${esc(x.t)}</h3><p>${esc(x.s)}</p>
+   <ul>${x.f.map(f=>`<li>${esc(f)}</li>`).join("")}</ul><span class="hint">Click to read · ${x.p} pages</span>
+   <div class="actions"><button class="btn btn-gold" type="button" data-read="${x.n}">Read issue</button><button class="btn btn-ghost" style="color:var(--fg)" type="button" data-close>Close</button></div>`;
+}
+function showPeek(el){
+  const x=byN[el.dataset.n]; clearTimeout(hideT); peekN=x.n; fillPeek(x);
+  const r=el.getBoundingClientRect(), pw=peek.offsetWidth||360, ph=peek.offsetHeight;
+  let left=r.right+14; if(left+pw>innerWidth-12) left=r.left-pw-14; if(left<12) left=Math.max(12,Math.min(innerWidth-pw-12,r.left));
+  let top=r.top+r.height/2-ph/2; top=Math.max(12,Math.min(innerHeight-ph-12,top));
+  peek.style.left=left+"px"; peek.style.top=top+"px"; peek.classList.add("on");
+}
+function hidePeek(){peek.classList.remove("on"); peekN=null; scrim.hidden=true}
+if(hover){
+  shelves.addEventListener("mouseover",e=>{const b=e.target.closest(".book"); if(b&&+b.dataset.n!==peekN) showPeek(b)});
+  shelves.addEventListener("mouseout",e=>{const b=e.target.closest(".book"); if(b&&!b.contains(e.relatedTarget)) hideT=setTimeout(hidePeek,60)});
+  shelves.addEventListener("focusin",e=>{const b=e.target.closest(".book"); if(b) showPeek(b)});
+  shelves.addEventListener("focusout",hidePeek);
+  shelves.addEventListener("click",e=>{const b=e.target.closest(".book"); if(b){hidePeek(); openReader(+b.dataset.n)}});
+  addEventListener("scroll",()=>{if(peekN) hidePeek()},{passive:true});
+}else{
+  shelves.addEventListener("click",e=>{const b=e.target.closest(".book"); if(!b) return; fillPeek(byN[b.dataset.n]); peekN=+b.dataset.n; scrim.hidden=false; requestAnimationFrame(()=>peek.classList.add("on"))});
+  scrim.addEventListener("click",hidePeek);
+  peek.addEventListener("click",e=>{const r=e.target.closest("[data-read]"); if(r){hidePeek(); openReader(+r.dataset.read)} if(e.target.closest("[data-close]")) hidePeek()});
+}
+
+/* reader */
+const reader=document.getElementById("reader"), pages=document.getElementById("pages");
+let cur=null;
+function openReader(n){
+  const x=byN[n]; if(!x) return; cur=x;
+  document.getElementById("rKicker").textContent=`Issue #${x.n} · ${fmtLong(x.d)}`;
+  document.getElementById("rTitle").textContent=x.t;
+  const idx=I.indexOf(x);
+  document.getElementById("rPrev").disabled=idx===0;
+  document.getElementById("rNext").disabled=idx===I.length-1;
+  let h="";
+  for(let p=1;p<=x.p;p++) h+=`<img src="${pageSrc(x,p)}" alt="Issue ${x.n}, page ${p}" ${p>1?'loading="lazy"':""} width="1300" height="1683"><span class="pgnum">Page ${p} of ${x.p}</span>`;
+  const nx=I[idx+1], pv=I[idx-1];
+  h+=`<div class="endcap">${pv?`<button class="btn btn-ghost" type="button" data-go="${pv.n}">← #${pv.n} ${esc(pv.t)}</button>`:""}${nx?`<button class="btn btn-gold" type="button" data-go="${nx.n}">Next: #${nx.n} →</button>`:`<button class="btn btn-gold" type="button" data-lib>Back to the library</button>`}</div>`;
+  pages.innerHTML=h; pages.scrollTop=0;
+  reader.hidden=false; document.body.style.overflow="hidden";
+  try{history.replaceState(null,"","#issue-"+x.n)}catch(e){}
+  document.getElementById("rClose").focus({preventScroll:true});
+}
+function closeReader(){reader.hidden=true; document.body.style.overflow=""; cur=null; try{history.replaceState(null,"",location.pathname+location.search)}catch(e){}}
+document.getElementById("rClose").onclick=closeReader;
+document.getElementById("rPrev").onclick=()=>{const i=I.indexOf(cur); if(i>0) openReader(I[i-1].n)};
+document.getElementById("rNext").onclick=()=>{const i=I.indexOf(cur); if(i<I.length-1) openReader(I[i+1].n)};
+document.getElementById("rZoom").onclick=e=>{const z=pages.classList.toggle("zoom"); e.currentTarget.setAttribute("aria-pressed",z)};
+pages.addEventListener("click",e=>{const g=e.target.closest("[data-go]"); if(g) openReader(+g.dataset.go); if(e.target.closest("[data-lib]")) closeReader()});
+document.getElementById("openLatest").onclick=()=>openReader(latest.n);
+addEventListener("keydown",e=>{
+  if(!document.getElementById("qrModal").hidden){ if(e.key==="Escape") closeQR(); return }
+  if(reader.hidden) return;
+  if(e.key==="Escape") closeReader();
+  if(e.key==="ArrowRight") document.getElementById("rNext").click();
+  if(e.key==="ArrowLeft") document.getElementById("rPrev").click();
+});
+
+/* QR */
+const qrModal=document.getElementById("qrModal");
+function showQR(n){
+  const url=n?`${APP_URL}#issue-${n}`:APP_URL;
+  const box=document.getElementById("qrBox"); box.innerHTML="";
+  try{ const q=qrcode(0,"M"); q.addData(url); q.make(); box.innerHTML=q.createSvgTag({cellSize:8,margin:2,scalable:true}); }
+  catch(e){ box.textContent="Use the link below."; }
+  document.getElementById("qrTitle").textContent=n?`Issue #${n}`:"Safety Newsletter Library";
+  document.getElementById("qrSub").textContent=n?`${byN[n].t} · ${fmt(byN[n].d)}`:"Scan with your phone camera to open every issue.";
+  document.getElementById("qrUrl").textContent=url;
+  qrModal.hidden=false;
+}
+function closeQR(){qrModal.hidden=true}
+document.getElementById("qrLib").onclick=()=>showQR(null);
+document.getElementById("rQR").onclick=()=>showQR(cur&&cur.n);
+document.getElementById("qrClose").onclick=closeQR;
+qrModal.addEventListener("click",e=>{if(e.target===qrModal) closeQR()});
+document.getElementById("qrCopy").onclick=e=>{
+  const t=document.getElementById("qrUrl").textContent, b=e.currentTarget;
+  const done=()=>{b.textContent="Copied";setTimeout(()=>b.textContent="Copy link",1600)};
+  const sel=()=>{const r=document.createRange();r.selectNodeContents(document.getElementById("qrUrl"));const s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent="Selected, copy it"};
+  try{navigator.clipboard.writeText(t).then(done,sel)}catch(err){sel()}
+};
+
+/* deep link: #issue-12 opens that issue; after an upload, open the new issue */
+
+const m=location.hash.match(/^#issue-(\d+)$/); if(m&&byN[m[1]]) openReader(+m[1]);
+}
+fetch("issues.json",{cache:"no-store"}).then(r=>{if(!r.ok) throw new Error(r.status); return r.json()}).then(boot).catch(()=>{
+  document.getElementById("shelves").innerHTML='<p class="empty">The library could not load. Check your signal and refresh the page.</p>';
+});
+})();
+</script>
+</body>
+</html>

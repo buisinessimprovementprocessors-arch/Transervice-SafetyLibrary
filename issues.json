@@ -1,0 +1,917 @@
+{
+ "topics": {
+  "hook": "Fifth wheel & drops",
+  "inspect": "Inspections & compliance",
+  "space": "Tight spaces & fixed objects",
+  "store": "Store deliveries & routes",
+  "focus": "Distraction & focus",
+  "fatigue": "Fatigue & hours",
+  "people": "Recognition & team"
+ },
+ "issues": [
+  {
+   "n": 1,
+   "d": "2025-10-30",
+   "p": 5,
+   "inc": 7,
+   "t": "Zero Tolerance on Dropped Trailers",
+   "tags": [
+    "hook",
+    "inspect",
+    "people"
+   ],
+   "s": "The first issue sets the tone: a zero-tolerance policy on dropped trailers and a recap of seven recent preventable incidents, from backing while distracted to following phone GPS into a no-truck zone. It also launches Operation Clean Inspection and the weekly crossword raffle.",
+   "f": [
+    "Safety Snapshot: 7 recent incidents and what to do instead",
+    "Safety First Mindset: live safety every mile",
+    "Did You Know? Report incidents at the scene, right away",
+    "Safety Blitz: Operation Clean Inspection (Oct 14 – Dec 31)",
+    "Behind the Wheel: #1 driver Marty Mosley, 43 years"
+   ]
+  },
+  {
+   "n": 2,
+   "d": "2025-11-07",
+   "p": 6,
+   "inc": 1,
+   "t": "When Fatigue Becomes a Decision",
+   "tags": [
+    "fatigue",
+    "focus",
+    "people"
+   ],
+   "s": "Harold Jett writes about fatigue as impairment and the FMCSA 392.3 rule, after a driver was terminated for pushing through. One hostler incident went unreported and was caught on Lytx review. New Continuous Improvement and night operations leaders are introduced.",
+   "f": [
+    "Safety Snapshot: hostler distracted by paperwork",
+    "Safety First Mindset: fatigue, by Harold Jett",
+    "Did You Know? Welcoming Mike Hall and Harold Jett",
+    "Crossword challenge: how to enter and win $25",
+    "Behind the Wheel: #4 driver Jimmy Morris, 32 years"
+   ]
+  },
+  {
+   "n": 3,
+   "d": "2025-11-14",
+   "p": 6,
+   "inc": 1,
+   "t": "Spot the Card, Get the Reward",
+   "tags": [
+    "focus",
+    "inspect",
+    "people"
+   ],
+   "s": "An unsecured swing door blew off a trailer in the wind, so this issue doubles down on verification. Alicia Bates covers distracted driving (a 5-second text at 55 mph is a football field blind), and the Spot the Card pre-trip blitz pays out its first $10 rewards.",
+   "f": [
+    "Safety Snapshot: door lost without a zip tie",
+    "Safety First Mindset: Stay Focused, Stay Alive",
+    "Did You Know? Focus + Verification = Zero Accidents",
+    "Spot the Card blitz winners",
+    "Behind the Wheel: #3 driver Milton Hall, accident-free since 1987"
+   ]
+  },
+  {
+   "n": 4,
+   "d": "2025-11-21",
+   "p": 5,
+   "inc": 3,
+   "t": "Fit for the Road: Fatigue Prevention & Driver Wellness",
+   "tags": [
+    "fatigue",
+    "focus",
+    "people"
+   ],
+   "s": "Three incidents, two ending in termination: a fatigued driver who plowed through sixteen construction barrels and a driver caught on a handheld phone. Nayelli Brito lays out fatigue warning signs and a wellness checklist, with Toys for Tots and open enrollment reminders.",
+   "f": [
+    "Safety Snapshot: parked car, construction zone, phone near-miss",
+    "Safety First Mindset: Fighting Fatigue on the Road",
+    "Did You Know? Toys for Tots drop-off through Dec 21",
+    "Open Enrollment closes Nov 30",
+    "Behind the Wheel: Curtis Lawrence"
+   ]
+  },
+  {
+   "n": 5,
+   "d": "2025-11-28",
+   "p": 6,
+   "inc": 1,
+   "t": "Pre-Trips and Defensive Driving Go Hand in Hand",
+   "tags": [
+    "inspect",
+    "space",
+    "people"
+   ],
+   "s": "A clipped set of store stairs leads into Chelsie Arnold's case for a proper pre-trip. Jesse Hodges reports 9 new hires trained and 11 drivers recertified on the Smith System Five Keys across a 250-driver fleet serving four states.",
+   "f": [
+    "Safety Snapshot: ICC bumper vs. store stairs",
+    "Safety First Mindset: The Power of a Proper Pre-Trip",
+    "Smith System Defensive Driving update",
+    "Did You Know? 2026 Vacation Bid memo",
+    "Behind the Wheel: #7 driver Lionel Battle, 27 years"
+   ]
+  },
+  {
+   "n": 6,
+   "d": "2025-12-05",
+   "p": 4,
+   "inc": 0,
+   "t": "This Is What Winning Looks Like",
+   "tags": [
+    "people"
+   ],
+   "s": "A zero-accident week and the Atlanta safety story: from about 16 preventable accidents a month in August to risk exposure down more than 80%. The site passed 90 OSHA injury-free days, celebrated with a safety cookout on December 10.",
+   "f": [
+    "Safety Snapshot: zero preventable accidents",
+    "The Atlanta Safety Story chart",
+    "90+ OSHA personal-injury-free days",
+    "Safety Cookout, Wednesday Dec 10",
+    "The Newsletter Wall"
+   ]
+  },
+  {
+   "n": 7,
+   "d": "2025-12-12",
+   "p": 4,
+   "inc": 2,
+   "t": "Safe Deliveries, Safe Returns: Storefront Awareness",
+   "tags": [
+    "store",
+    "space",
+    "people"
+   ],
+   "s": "Two wide-turn contacts open a store-delivery issue. Jasmine Washington covers busy lots, tight docks, and talking with store associates, plus top tips such as GOAL before backing. Joe Robinson shares why following distance is his number-one habit.",
+   "f": [
+    "Safety Snapshot: tree limb and service vehicle",
+    "Safety First Mindset: The Importance of Safe Deliveries",
+    "Top tips for safer store deliveries",
+    "Behind the Wheel: #10 driver Joe Robinson"
+   ]
+  },
+  {
+   "n": 8,
+   "d": "2025-12-19",
+   "p": 4,
+   "inc": 4,
+   "t": "Safe Deliveries This Holiday Season",
+   "tags": [
+    "hook",
+    "store",
+    "people"
+   ],
+   "s": "Four incidents, including two dropped trailers and a GPS detour through a residential street. Nayelli Brito's holiday briefing covers heavier traffic, winter weather, fatigue, and cargo theft. James Harmon explains why learning never stops on the road.",
+   "f": [
+    "Safety Snapshot: 2 dropped trailers, GPS detour, tight turn",
+    "Safety First Mindset: Keeping Christmas Deliveries Accident Free",
+    "Holiday hazards checklist",
+    "Behind the Wheel: #8 driver James Harmon"
+   ]
+  },
+  {
+   "n": 9,
+   "d": "2025-12-26",
+   "p": 4,
+   "inc": 1,
+   "t": "Slow Down. Check Twice. Prevent Drops.",
+   "tags": [
+    "hook",
+    "inspect",
+    "people"
+   ],
+   "s": "Ashley Fuentes sets the fifth-wheel standard: get out and visually confirm the kingpin, and restart the coupling routine if you are interrupted. Also covered: a dock-hook bumper strike and a driver hurt reaching for a box at a store. Toys for Tots finished with 237 donations.",
+   "f": [
+    "Safety Snapshot: 1 accident and 1 recordable injury",
+    "Safety First Mindset: Preventing Dropped Trailers",
+    "Before You Pull Away checklist",
+    "Ernest McCrary passes a Level 1 DOT inspection",
+    "Toys for Tots: 237 toys collected"
+   ]
+  },
+  {
+   "n": 10,
+   "d": "2026-01-02",
+   "p": 4,
+   "inc": 3,
+   "t": "2026: Safety First, Always",
+   "tags": [
+    "hook",
+    "inspect",
+    "space",
+    "people"
+   ],
+   "s": "The new year opens with curb, pole, and dropped-trailer incidents and a full reset checklist from Ashley Fuentes. The 2026 safety goals are set: zero preventable accidents, 100% pre- and post-trips, and no dropped trailers. JD Kendall is recognized for a Level 1 DOT pass.",
+   "f": [
+    "Safety Snapshot: curb, yellow pole, dropped trailer",
+    "Safety First Mindset: New Year Safety Reminders",
+    "2026 Safety Goals",
+    "Did You Know? Check. Find. Reward. card hunt",
+    "Unscramble-the-word game"
+   ]
+  },
+  {
+   "n": 11,
+   "d": "2026-01-09",
+   "p": 4,
+   "inc": 2,
+   "t": "Take the Extra Minute",
+   "tags": [
+    "space",
+    "store",
+    "fatigue",
+    "people"
+   ],
+   "s": "A dumpster hit during a tight U-turn and a tree struck behind a store prompt Ashley Fuentes's guide to tight spaces and fixed objects: if the space looks tight, it is. Ken Willis talks about staying alert, mental preparation, and not being in a hurry.",
+   "f": [
+    "Safety Snapshot: dumpster and tree trunk",
+    "Safety First Mindset: Tight Spaces, Fixed Objects",
+    "When in doubt: stop, call dispatch",
+    "Behind the Wheel: #9 driver Ken Willis"
+   ]
+  },
+  {
+   "n": 12,
+   "d": "2026-01-16",
+   "p": 4,
+   "inc": 3,
+   "t": "Keep an Eye Out: Equipment Checks Matter",
+   "tags": [
+    "inspect",
+    "space",
+    "hook",
+    "people"
+   ],
+   "s": "Joshua Dennis explains the white Preventive Maintenance tag on the left side of every trailer: valid six months, and an expired tag means the trailer does not move. Incidents include a bag hung on the boom handle that flipped a fifth wheel. Tommy Rooks tug tests three times.",
+   "f": [
+    "Safety Snapshot: yellow pole, construction sign, boom handle",
+    "Safety First Mindset: Preventive Maintenance Tags",
+    "Behind the Wheel: #10 driver Tommy Rooks"
+   ]
+  },
+  {
+   "n": 13,
+   "d": "2026-01-23",
+   "p": 4,
+   "inc": 3,
+   "t": "Drive Smart. Stay Safe.",
+   "tags": [
+    "space",
+    "inspect"
+   ],
+   "s": "Winter arrives with Ashley Fuentes's ice and snow awareness guide and an Icy Weather = High Risk poster. Three incidents: contact with an owner-operator tractor, a wide trailer swing, and rebar at Building 400. New Transervice safety shirts have arrived.",
+   "f": [
+    "Safety Snapshot: 3 preventable accidents",
+    "Safety First Mindset: Winter Road Safety, Ice and Snow",
+    "Drive for the Conditions poster",
+    "Did You Know? New Transervice safety shirts"
+   ]
+  },
+  {
+   "n": 14,
+   "d": "2026-01-30",
+   "p": 4,
+   "inc": 2,
+   "t": "Space Management & Stationary Objects",
+   "tags": [
+    "space",
+    "hook",
+    "store"
+   ],
+   "s": "An unreported trailer detachment and a tree strike on a curve lead into space management, which this issue calls one of the most preventable incident types. A full page of driver pointers covers backing and maneuvering behind stores.",
+   "f": [
+    "Safety Snapshot: unreported detachment, tree on a curve",
+    "Safety First Mindset: Space Management, by Ashley Fuentes",
+    "Backing & Maneuvering Behind Stores pointers",
+    "Did You Know? The Power of Positive Driving"
+   ]
+  },
+  {
+   "n": 15,
+   "d": "2026-02-13",
+   "p": 4,
+   "inc": 4,
+   "t": "Trailer Safety: No Shortcuts. No Excuses.",
+   "tags": [
+    "inspect",
+    "store",
+    "people"
+   ],
+   "s": "Four incidents tied to trailers and loads: a missing door latch, pallets shifted against a door, a lane change on Highway 138, and a salvage-load pallet. Jasmine Washington's trailer safety article pairs with this week's safety phrases, starting with Eyes Up.",
+   "f": [
+    "Safety Snapshot: 4 trailer and load incidents",
+    "Safety First Mindset: Trailer Safety",
+    "This Week's Safety Phrases",
+    "Did You Know? DOT Level I recognition"
+   ]
+  },
+  {
+   "n": 16,
+   "d": "2026-02-20",
+   "p": 4,
+   "inc": 3,
+   "t": "The Critical Role of the Fifth Wheel",
+   "tags": [
+    "hook",
+    "space",
+    "people"
+   ],
+   "s": "Yvette Belland walks through the fifth wheel and how to prevent dropped trailers, after contacts with a yellow pole, a tree branch during a triple drop-and-hook, and a trailer thermostat. A look-ahead poster and a Driver Appreciation Spotlight round it out.",
+   "f": [
+    "Safety Snapshot: pole, branch, trailer contact",
+    "Safety First Mindset: Preventing Dropped Trailers",
+    "Always look ahead and around your truck",
+    "Did You Know? Driver Appreciation Spotlight"
+   ]
+  },
+  {
+   "n": 17,
+   "d": "2026-02-27",
+   "p": 4,
+   "inc": 0,
+   "t": "100% Compliance, No Exceptions",
+   "tags": [
+    "inspect",
+    "people"
+   ],
+   "s": "A zero-accident week. Yvette Belland writes that professionalism is defined by consistent compliance, every rule every time, and the Driver Appreciation Spotlight continues.",
+   "f": [
+    "Safety Snapshot: zero preventable accidents",
+    "Safety First Mindset: 100% Compliance",
+    "Did You Know? Driver Appreciation Spotlight"
+   ]
+  },
+  {
+   "n": 18,
+   "d": "2026-03-06",
+   "p": 4,
+   "inc": 3,
+   "t": "Integrity on the Road",
+   "tags": [
+    "focus",
+    "inspect",
+    "people"
+   ],
+   "s": "Ashley Fuentes on being safe when nobody is watching, after three incidents including contacts in stopped traffic and on I-85. James Harmon is congratulated for a Level I DOT inspection and the raffle winner is announced.",
+   "f": [
+    "Safety Snapshot: 3 accidents",
+    "Safety First Mindset: Integrity on the Road",
+    "Did You Know? James Harmon's DOT Level I",
+    "Raffle winner"
+   ]
+  },
+  {
+   "n": 19,
+   "d": "2026-03-13",
+   "p": 4,
+   "inc": 5,
+   "t": "Small Moments That Make a Big Difference",
+   "tags": [
+    "space",
+    "inspect"
+   ],
+   "s": "The busiest snapshot of the year so far, with five incidents: an injury moving ramp logs, pallets run over at a dock, losing sight of a trailer at Building 400, a utility-truck clearance check, and landing gear caught on a railroad track. Tomica Vance draws the lessons.",
+   "f": [
+    "Safety Snapshot: 5 incidents",
+    "Safety First Mindset: Small Moments, by Tomica Vance",
+    "Did You Know? Safety audits"
+   ]
+  },
+  {
+   "n": 20,
+   "d": "2026-03-20",
+   "p": 4,
+   "inc": 1,
+   "t": "Think Like a Smith System Driver",
+   "tags": [
+    "hook",
+    "focus"
+   ],
+   "s": "A tractor undershot the kingpin and hit a reefer guard. Phelicia Alert makes the case for driving like a professional with the Smith System, plus a page on professional over reaction and a What Would You Do? driver quiz.",
+   "f": [
+    "Safety Snapshot: undershot kingpin",
+    "Safety First Mindset: Drive Like a Professional",
+    "You can't control other drivers, only your response",
+    "Driver Quiz: What Would You Do?"
+   ]
+  },
+  {
+   "n": 21,
+   "d": "2026-03-27",
+   "p": 4,
+   "inc": 1,
+   "t": "GOAL: Your Best Tool for Preventing Yard Accidents",
+   "tags": [
+    "space",
+    "store",
+    "people"
+   ],
+   "s": "Nayelli Brito makes GOAL (Get Out And Look) the headline tool after a parking-lot setup went wrong around a parked delivery truck. A Women Behind the Wheel feature profiles pioneers Lillie Drennan and Luella Bates.",
+   "f": [
+    "Safety Snapshot: parked delivery truck in a store lot",
+    "Safety First Mindset: GOAL",
+    "Women Behind the Wheel: Driving Change",
+    "Did You Know? Driver appreciation"
+   ]
+  },
+  {
+   "n": 22,
+   "d": "2026-04-03",
+   "p": 4,
+   "inc": 2,
+   "t": "Small Actions, Big Impact",
+   "tags": [
+    "space",
+    "people"
+   ],
+   "s": "A guardrail spike bent a bumper sleeve and two tractors met on the ready line. Sharmette Grady covers spacing and stationary objects, Women Behind the Wheel continues with a 42-year driver, and Carl Sweat earns a DOT Level I recognition.",
+   "f": [
+    "Safety Snapshot: guardrail spike, ready-line contact",
+    "Safety First Mindset: Proper Spacing & Awareness",
+    "Women Behind the Wheel, part 2",
+    "Did You Know? Carl Sweat's DOT Level I"
+   ]
+  },
+  {
+   "n": 23,
+   "d": "2026-04-10",
+   "p": 4,
+   "inc": 2,
+   "t": "Be the Example: Safe Habits Protect Everyone",
+   "tags": [
+    "hook",
+    "space",
+    "people"
+   ],
+   "s": "A knocked-down light pole and a trailer that dropped onto the tractor frame despite a tug test. Yvette Belland writes on building a safer road together, there is a how-to for tracking FMLA time in Absence Resource, and the team celebrates Brett Peace's retirement after 20+ years.",
+   "f": [
+    "Safety Snapshot: light pole, trailer drop",
+    "Safety First Mindset: Building a Safer Road Together",
+    "Know the Process: tracking FMLA time",
+    "Cheers to Brett Peace's retirement"
+   ]
+  },
+  {
+   "n": 24,
+   "d": "2026-04-17",
+   "p": 4,
+   "inc": 1,
+   "t": "Clear Roads Ahead: Safety & Workforce Spotlight",
+   "tags": [
+    "store",
+    "inspect",
+    "people"
+   ],
+   "s": "A wrong turn out of Store 625 ended with a backing strike on a tree. Tomica Vance explains scaling loads and using weigh stations, seven new drivers are welcomed, and the Safety Department's hands-on training is highlighted.",
+   "f": [
+    "Safety Snapshot: Store 625 backing strike",
+    "Safety First Mindset: Scaling Your Load & Weigh Stations",
+    "Building the Team: 7 new drivers",
+    "Did You Know? Hands-on training"
+   ]
+  },
+  {
+   "n": 25,
+   "d": "2026-04-24",
+   "p": 4,
+   "inc": 2,
+   "t": "Safety Starts with the Basics",
+   "tags": [
+    "fatigue",
+    "hook",
+    "store",
+    "people"
+   ],
+   "s": "A GPS-led turn near the DC and a two-attempt coupling that failed. Ashley Fuentes covers Hours of Service and log compliance, and new hires who completed backing-maneuver training are recognized as top performers.",
+   "f": [
+    "Safety Snapshot: GPS turn, failed coupling",
+    "Safety First Mindset: Hours of Service & Logs",
+    "Building the Team: new hire training success",
+    "Did You Know? Safety Department and Committee teamwork"
+   ]
+  },
+  {
+   "n": 26,
+   "d": "2026-05-01",
+   "p": 4,
+   "inc": 1,
+   "t": "If Your Mind Wanders, So Does Your Lane",
+   "tags": [
+    "focus",
+    "hook",
+    "inspect"
+   ],
+   "s": "A dropped trailer at the end of a multi-stop drop-and-hook. Ashley Fuentes covers the distractions you cannot see, mental drift, and how to catch it early. Jesse Hodges introduces the tractor and trailer picture process, with a warning about rising claims.",
+   "f": [
+    "Safety Snapshot: multi-stop drop-and-hook drop",
+    "Safety First Mindset: If Your Mind Wanders",
+    "Building the Team: tractor & trailer picture process",
+    "Did You Know? Protect yourself from claims"
+   ]
+  },
+  {
+   "n": 27,
+   "d": "2026-05-08",
+   "p": 4,
+   "inc": 3,
+   "t": "Commitment to Safe Operations",
+   "tags": [
+    "space",
+    "hook",
+    "people"
+   ],
+   "s": "Three low-speed incidents lead to Nayelli Brito's Slow Down, Set Up, and Control the Space. The Safety Committee celebrates 200 days of safety, and the new QR code fifth-wheel process is introduced.",
+   "f": [
+    "Safety Snapshot: 3 preventable accidents",
+    "Safety First Mindset: Control the Space",
+    "Building the Team: 200 Days of Safety",
+    "Did You Know? QR code fifth-wheel process"
+   ]
+  },
+  {
+   "n": 28,
+   "d": "2026-05-15",
+   "p": 4,
+   "inc": 3,
+   "t": "Protecting Drivers Through Prevention",
+   "tags": [
+    "focus",
+    "hook",
+    "people"
+   ],
+   "s": "Incidents include a trailer dropped after the landing gear was not lowered. Ashley Fuentes tackles distracted driving, Yvette Belland updates the QR Code Fifth Wheel Pilot Program, and drivers are reminded not to skip their physicals.",
+   "f": [
+    "Safety Snapshot: tandems, exit ramp, landing gear",
+    "Safety First Mindset: Distracted Driving",
+    "QR Code Fifth Wheel Pilot update",
+    "Did You Know? Health Matters, don't skip your physical"
+   ]
+  },
+  {
+   "n": 29,
+   "d": "2026-05-22",
+   "p": 4,
+   "inc": 1,
+   "t": "Tug Tests, Fifth Wheels, and Dropped Trailers",
+   "tags": [
+    "hook",
+    "space"
+   ],
+   "s": "One missed step can change everything. Tomica Vance's fifth-wheel and tug-test refresher follows a trailer that brushed a yellow pole on a right turn. Building the Team covers staying positive behind the wheel, and a word search closes the issue.",
+   "f": [
+    "Safety Snapshot: yellow pole on a right turn",
+    "Safety First Mindset: Tug Tests & Fifth Wheels",
+    "Building the Team: Stay Positive",
+    "Word Search"
+   ]
+  },
+  {
+   "n": 30,
+   "d": "2026-06-05",
+   "p": 4,
+   "inc": 2,
+   "t": "Delivering Safety Every Mile",
+   "tags": [
+    "inspect",
+    "hook",
+    "people"
+   ],
+   "s": "Jesse Hodges writes the pre-trip guide: key inspection points, ELD compliance, clearing unidentified driving events, and how roadside violations raise CSA and ISS scores. Davon Autry passes a clean DOT Level I inspection.",
+   "f": [
+    "Safety Snapshot: hostler trailer drop, stop sign",
+    "Safety First Mindset: Pre-Trip Inspections Protect You",
+    "ELD compliance and UDEs",
+    "Did You Know? Davon Autry's clean Level I"
+   ]
+  },
+  {
+   "n": 31,
+   "d": "2026-06-12",
+   "p": 4,
+   "inc": 2,
+   "t": "The Right Route Makes All the Difference",
+   "tags": [
+    "store",
+    "space",
+    "people"
+   ],
+   "s": "A driver locked out of his tractor was hurt trying a crowbar, and another backed into a trailer corner post. Yvette Belland covers following approved truck routes, and Jasper Porter passes a clean Level III inspection.",
+   "f": [
+    "Safety Snapshot: lockout injury, corner post",
+    "Safety First Mindset: Follow the Right Route",
+    "Building the Team: Stay Positive",
+    "Did You Know? Jasper Porter's clean Level III"
+   ]
+  },
+  {
+   "n": 32,
+   "d": "2026-06-19",
+   "p": 4,
+   "inc": 2,
+   "t": "Safe Starts, Strong Finishes",
+   "tags": [
+    "fatigue",
+    "hook",
+    "people"
+   ],
+   "s": "With many drivers moving to new schedules, Ashley Fuentes covers adapting safely and recognizing fatigue. Five new drivers are welcomed and the new bid schedule starts June 21.",
+   "f": [
+    "Safety Snapshot: landing gear, yard contact",
+    "Safety First Mindset: Adapting to a New Schedule",
+    "Building the Team: 5 new drivers",
+    "Did You Know? New bid schedule begins June 21"
+   ]
+  },
+  {
+   "n": 33,
+   "d": "2026-06-26",
+   "p": 4,
+   "inc": 2,
+   "t": "Live Load Doesn't Mean Drive Away",
+   "tags": [
+    "inspect",
+    "store"
+   ],
+   "s": "The newsletter debuts its Moving Forward Together redesign. Two trailer doors came off for the same root cause, and a pallet of bottled water fell from a live-loaded backhaul onto the roadway. The standard: a final pre-trip before leaving every vendor.",
+   "f": [
+    "Safety Snapshot: two trailer-door incidents",
+    "Safety Mindset: Live Load Doesn't Mean Drive Away",
+    "Pre-Trip the Right Way poster",
+    "Safety Highlights and word search"
+   ]
+  },
+  {
+   "n": 34,
+   "d": "2026-07-03",
+   "p": 4,
+   "inc": 2,
+   "t": "Your Health Keeps You Moving",
+   "tags": [
+    "fatigue",
+    "hook",
+    "people"
+   ],
+   "s": "Ashley Fuentes on regular checkups and DOT physicals, after a trailer-skirt strike and a yard drop during hookup. Seven new team members are welcomed, and drivers get heat-safety tips as Georgia temperatures climb.",
+   "f": [
+    "Safety Snapshot: fixed object, yard drop",
+    "Safety First Mindset: Your Health Keeps You Moving",
+    "Welcome to the Team: 7 new hires",
+    "Did You Know? Stay Cool, Stay Safe"
+   ]
+  },
+  {
+   "n": 35,
+   "d": "2026-07-10",
+   "p": 4,
+   "inc": 2,
+   "t": "Respecting Our Shared Workspace",
+   "tags": [
+    "inspect",
+    "people"
+   ],
+   "s": "An unsecured swing door hit a dock and an interstate lane contact damaged a mirror. Nayelli Brito reminds drivers that the trucks are a shared workspace, more new hires are welcomed, and drivers are invited to send in their own stories.",
+   "f": [
+    "Safety Snapshot: swing door, lane contact",
+    "Safety First Mindset: Respecting Our Shared Workspace",
+    "Welcome to the Team",
+    "Did You Know? Share your stories"
+   ]
+  },
+  {
+   "n": 36,
+   "d": "2026-07-17",
+   "p": 4,
+   "inc": 1,
+   "t": "Stay Alert, Fatigue Can Change Everything",
+   "tags": [
+    "fatigue",
+    "store",
+    "people"
+   ],
+   "s": "A trailer clipped a parked pickup leaving a store lot. Yvette Belland covers how fatigue dulls judgment and hazard recognition, and Jose Soria wins a $400 Transervice gift card.",
+   "f": [
+    "Safety Snapshot: parked pickup in store lot",
+    "Safety First Mindset: Fatigue Can Change Everything",
+    "This Week's Updates: Jose Soria wins $400",
+    "Welcome to our new hires"
+   ]
+  },
+  {
+   "n": 37,
+   "d": "2026-07-24",
+   "p": 4,
+   "inc": 4,
+   "t": "Stay Alert, Stay Connected, Stay Clear",
+   "tags": [
+    "fatigue",
+    "hook",
+    "space",
+    "people"
+   ],
+   "s": "Four incidents: a lane departure onto the shoulder, a sideswiped safety pole, a staging drop, and a curb strike. Sharmette Grady ties together fatigue, dropped trailers, and fixed objects, and Donna Wildes earns a clean Level I inspection.",
+   "f": [
+    "Safety Snapshot: 4 preventable accidents",
+    "Safety First Mindset: Stay Alert, Connected, Clear",
+    "Congratulations to Donna Wildes and Ben",
+    "Word Search"
+   ]
+  },
+  {
+   "n": 38,
+   "d": "2026-07-31",
+   "p": 4,
+   "inc": 0,
+   "t": "Training, ELD Accuracy & Hours-of-Service",
+   "tags": [
+    "fatigue",
+    "inspect"
+   ],
+   "s": "A zero-accident week. Yvette Belland covers ELD accuracy and Hours of Service as PeopleNet system updates roll out and drivers learn the new screens.",
+   "f": [
+    "Safety Snapshot: zero preventable accidents",
+    "Safety First Mindset: ELD Accuracy & HOS",
+    "This Week's Updates: PeopleNet changes",
+    "Word Search"
+   ]
+  },
+  {
+   "n": 39,
+   "d": "2026-08-07",
+   "p": 4,
+   "inc": 1,
+   "t": "Post-Trip Inspections Protect the Next Driver",
+   "tags": [
+    "inspect",
+    "people"
+   ],
+   "s": "A yard backing contact cracked a spot mirror. Ashley Fuentes explains why the post-trip is the next driver's pre-trip, and William Anderson and Samuel Meeks each earn a clean Level III inspection.",
+   "f": [
+    "Safety Snapshot: spot mirror in the yard",
+    "Safety First Mindset: Post-Trip Inspections",
+    "Congratulations: William Anderson & Samuel Meeks"
+   ]
+  },
+  {
+   "n": 40,
+   "d": "2026-08-14",
+   "p": 4,
+   "inc": 1,
+   "t": "Truck-Safe Navigation Starts with the Right GPS",
+   "tags": [
+    "store",
+    "inspect",
+    "people"
+   ],
+   "s": "Jesse Hodges on why only an approved truck GPS belongs in the cab, after a lane-change contact on I-85. A new memo stresses verifying trailer temperatures, and Transervice announces holiday toys for employees' kids and grandkids 13 and under.",
+   "f": [
+    "Safety Snapshot: I-85 lane change",
+    "Safety First Mindset: Truck-Safe Navigation",
+    "This Week's Updates: temperature check memo",
+    "Holiday Gifts program"
+   ]
+  },
+  {
+   "n": 41,
+   "d": "2026-08-21",
+   "p": 4,
+   "inc": 1,
+   "t": "Disconnect Before You Pull Away",
+   "tags": [
+    "hook",
+    "inspect",
+    "people"
+   ],
+   "s": "A red airline left connected snapped back and damaged a hostler. The post-trip series continues, a new call-out system is announced for the following week, and the team wishes Safety Manager Jesse Hodges a happy birthday.",
+   "f": [
+    "Safety Snapshot: airline not disconnected",
+    "Safety First Mindset: Post-Trip Inspections, part 2",
+    "New call-out system coming",
+    "Happy Birthday, Jesse Hodges"
+   ]
+  },
+  {
+   "n": 42,
+   "d": "2026-08-28",
+   "p": 4,
+   "inc": 2,
+   "t": "PeopleNet: Start Every Trip the Right Way",
+   "tags": [
+    "hook",
+    "inspect"
+   ],
+   "s": "A skipped tug test caused a drop at a store and a trailer door fell off leaving a dock. Ashley Fuentes covers starting each trip correctly in PeopleNet, the new call-out app went live August 27, and drivers are asked to clear personal items at end of shift.",
+   "f": [
+    "Safety Snapshot: no tug test, door off",
+    "Safety First Mindset: PeopleNet",
+    "New call-out system is live",
+    "Friendly Reminder: check before you leave"
+   ]
+  },
+  {
+   "n": 43,
+   "d": "2026-09-04",
+   "p": 4,
+   "inc": 1,
+   "t": "Respect on the Road & in the Workplace",
+   "tags": [
+    "space",
+    "people"
+   ],
+   "s": "A yard pass too close to parked trailers damaged a 7-way receptacle box. Ashley Fuentes addresses professionalism, harassment, and bullying, with Labor Day weekend driver recognition, a BOLO trailers list, and an FMCSA word search.",
+   "f": [
+    "Safety Snapshot: 7-way receptacle box",
+    "Safety First Mindset: Respect on the Road & at Work",
+    "Driver Recognition, Labor Day weekend",
+    "BOLO Trailers and word search"
+   ]
+  },
+  {
+   "n": 45,
+   "d": "2026-09-18",
+   "p": 4,
+   "inc": 0,
+   "t": "Driver Appreciation Week",
+   "tags": [
+    "people"
+   ],
+   "s": "A zero-accident week lands during Driver Appreciation Week. The issue thanks every professional driver, along with the safety team and volunteers who cooked and handed out gifts, and congratulates Kelvin Bufford on his certificate.",
+   "f": [
+    "Safety Snapshot: zero preventable accidents",
+    "Celebrating Our Drivers",
+    "Thank you to the Safety Team & volunteers",
+    "Congratulations, Kelvin Bufford"
+   ]
+  },
+  {
+   "n": 46,
+   "d": "2026-09-25",
+   "p": 4,
+   "inc": 3,
+   "t": "Height Clearances",
+   "tags": [
+    "space",
+    "hook",
+    "people"
+   ],
+   "s": "A tractor scraped passing under a bridge, which sets up Yvette Belland's guide to low bridges, overpasses, tree limbs, and canopies. Ten new hires head into field training, and the Hispanic Heritage Month series begins.",
+   "f": [
+    "Safety Snapshot: bridge strike, DC drop, pull-away",
+    "Safety Mindset: Height Clearances",
+    "Welcome to our 10 new hires",
+    "Hispanic Heritage Month: Did You Know?"
+   ]
+  },
+  {
+   "n": 47,
+   "d": "2026-10-02",
+   "p": 4,
+   "inc": 1,
+   "t": "Managing Your Hours Means Managing Your Safety",
+   "tags": [
+    "fatigue",
+    "people"
+   ],
+   "s": "A tractor parked on a concrete barrier was damaged when the next driver backed it out. Ashley Fuentes covers Hours of Service and proper rest, new hires finish their first week, and Curtis Lawrence and Sean earn clean Level III inspections.",
+   "f": [
+    "Safety Snapshot: parked on a concrete barrier",
+    "Safety Mindset: Managing Your Hours",
+    "New Hire Spotlight: first week",
+    "Hispanic Heritage Month"
+   ]
+  },
+  {
+   "n": 48,
+   "d": "2026-10-09",
+   "p": 4,
+   "inc": 4,
+   "t": "Fixed Objects: Small Hazards, Big Consequences",
+   "tags": [
+    "space",
+    "store",
+    "people"
+   ],
+   "s": "Four fixed-object incidents: a pole, a yellow safety pole hit without a GOAL, a curb on a U-turn, and a maintenance golf cart. Drivers wore pink for Breast Cancer Awareness Month, and Rod Manning and William earn clean Level III inspections.",
+   "f": [
+    "Safety Snapshot: 4 fixed-object incidents",
+    "Safety Mindset: Fixed Objects",
+    "Drivers support Breast Cancer Awareness",
+    "Hispanic Heritage Month"
+   ]
+  },
+  {
+   "n": 49,
+   "d": "2026-10-16",
+   "p": 4,
+   "inc": 2,
+   "t": "Tight Spaces, Big Risks Behind Stores",
+   "tags": [
+    "space",
+    "store",
+    "people"
+   ],
+   "s": "The latest issue: a mirror contact on I-85 and a squeeze past a parked trailer at a store. Nayelli Brito covers safe maneuvering behind stores, starting before the turn, and the team celebrates National Boss's Day.",
+   "f": [
+    "Safety Snapshot: I-85 mirror, limited clearance",
+    "Safety Mindset: Safe Maneuvering Behind Stores",
+    "Happy National Boss's Day",
+    "Hispanic Heritage Month"
+   ]
+  }
+ ]
+}
